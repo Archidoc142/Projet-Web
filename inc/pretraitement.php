@@ -3,4 +3,6 @@
     {
         session_start();
     }
+    
+    include_once('autoloader.php');
 ?>

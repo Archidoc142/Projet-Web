@@ -1,6 +1,6 @@
 <?php
 function loadClass($className) {
-    require_once './classe/' . $className . '.php';
+    require_once './class/' . $className . '.php';
  }
 
  spl_autoload_register('loadClass');

@@ -1,4 +1,4 @@
-<?php require_once("traitement.php");?>
+<?php require_once("pretraitement.php");?>
 
 <!DOCTYPE html>
 <html lang="fr">
