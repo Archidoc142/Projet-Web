@@ -338,3 +338,7 @@ VALUES
        ('55X9863', 6, 1),
        ('55X9863', 13, 1),
        ('55X9863', 15, 1);
+
+INSERT INTO utilisateur (pseudonyme, mdp, courriel, nom, prenom, id_langue)
+VALUES ('Bob1234', 'abc123', 'bob1234@courriel.com', 'Bobby', 'Robert', 3),
+       ('TeleviseurFan', '12345', 'televiseurfan@courriel.com', 'Pierre', 'Paul', 1);
