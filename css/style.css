@@ -20,3 +20,144 @@ main#profile .grid {
   width: 100%;
   grid-template-columns: 50% 50%;
 }
+@font-face
+{
+    font-family: 'Poppins';
+    src: url('../Poppins-Regular.ttf');
+}
+
+@font-face
+{
+    font-family: 'Whitney';
+    src: url('../Whitney-Bold.ttf');
+}
+
+*
+{
+    font-family: 'Poppins';
+    box-sizing: border-box;
+    margin: 0;
+}
+
+h1, h2, h3
+{
+    font-family: 'Whitney';
+}
+
+.nav-header
+{
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px;
+}
+
+.nav-header, footer
+{
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-header
+{
+    background-color: #e86100;
+}
+
+footer
+{
+    background-color: #000000;
+    color: white;
+}
+nav
+{
+    position: relative;
+    z-index: 10;
+}
+
+nav button
+{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#nav-menu-img, 
+#nav-fav-img
+{
+    fill: white;
+}
+
+.nav-user-img
+{
+    filter: invert(98%) sepia(100%) saturate(20%) hue-rotate(208deg) brightness(104%) contrast(100%);
+}
+
+.nav-header a, .nav-header-left, .nav-header-right, #nav-menu-btn
+{
+    display: flex;
+    align-items: center;
+}
+
+.nav-buttons ul
+{
+    padding: 0;
+    list-style-type: none;
+    width: 100%
+}
+
+.nav-buttons li
+{
+    width: 100%
+}
+
+.nav-buttons
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-buttons li a
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 56px;
+    color: white;
+}
+
+.nav-buttons ul li:nth-of-type(even) a:hover,
+.nav-buttons ul li:nth-of-type(odd) a:hover
+{
+    background-color: #ff8025;
+}
+
+.nav-buttons ul li:nth-of-type(even) a
+{
+    background-color: rgb(17, 99, 188);
+}
+
+.nav-buttons ul li:nth-of-type(odd) a
+{
+    background-color: rgb(28, 106, 189);
+}
+
+main
+{
+    position: absolute;
+    top: 64px;
+    color: white;
+}
+
+footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+body
+{
+    background-color: rgb(36, 36, 36);
+}
