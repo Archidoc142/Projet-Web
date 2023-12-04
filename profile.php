@@ -17,7 +17,7 @@
       <h2><?= $userObj->get_pseudonyme(); ?></h2>
 
       <div class="grid">
-        <img src="" alt="Photo de profil" />
+        <img src="<?= $userObj->get_photo(); ?>" alt="Photo de profil" />
   
         <label for="prenom">Prénom :</label>
         <input type="text" id="prenom" name="prenom" value="<?= $userObj->get_prenom(); ?>" readonly />
@@ -38,9 +38,35 @@
     </form>
 
 
-    <a href="favoris.php?idUser=<?= $userObj->get_id(); ?>">Mes favoris</a>
+    <a href="favoris?idUser=<?= $userObj->get_id(); ?>" class="button">
+      <?php 
+      if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
+      ?>
+        Mes favoris
+      <?php 
+      }
+      else {
+      ?>
+        Favoris
+      <?php 
+      }
+      ?>
+    </a>
 
-    <a href="evaluations.php?idUser=<?= $userObj->get_id(); ?>">Mes évaluatons</a>
+    <a href="evaluations?idUser=<?= $userObj->get_id(); ?>" class="button">
+      <?php 
+      if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
+      ?>
+        Mes évaluations
+      <?php 
+      }
+      else {
+      ?>
+        Évaluations
+      <?php 
+      }
+      ?>
+    </a>
 
     <?php  
     }

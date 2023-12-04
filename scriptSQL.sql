@@ -10,7 +10,8 @@ CREATE TABLE utilisateur (
     courriel VARCHAR(63) NOT NULL,
     nom VARCHAR(63) NOT NULL,
     prenom VARCHAR(63) NOT NULL,
-    id_langue INT NOT NULL
+    id_langue INT NOT NULL,
+    photo TEXT
 );
 
 CREATE TABLE langue (
