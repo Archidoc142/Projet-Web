@@ -39,8 +39,7 @@ main#profile .grid {
     margin: 0;
 }
 
-h1, h2, h3
-{
+h1, h2, h3 {
     font-family: 'Whitney';
 }
 
@@ -161,4 +160,21 @@ footer
 body
 {
     background-color: rgb(36, 36, 36);
+    color: white;
+}
+
+.none {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.titleIndex {
+    margin: 50px 0;
 }
