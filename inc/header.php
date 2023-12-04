@@ -29,7 +29,7 @@
                 </button>
                 <button id="nav-profile-btn">
                     <a href="index.html">
-                        <img class="nav-user-img" src="user-170.svg" alt="User" width="32" height="32">
+                        <img class="nav-user-img" src="img/user-170.svg" alt="User" width="32" height="32">
                     </a>
                 </button>
             </div>
