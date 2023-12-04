@@ -34,7 +34,7 @@
                 </button>
             </div>
         </div>
-        <!--div class="nav-buttons">
+        <div class="nav-buttons none">
             <ul>
                 <li><a href="index.html">Marques</a></li>
                 <li><a href="index.html">Téléviseurs</a></li>
