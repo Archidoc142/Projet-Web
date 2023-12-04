@@ -162,3 +162,61 @@ body
 {
     background-color: rgb(36, 36, 36);
 }
+
+.favori img
+{
+    width: 120px;
+    border-radius: 8px;
+}
+
+.favori-row
+{
+    display: flex;
+}
+
+.favori-buttons
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 8px;
+}
+
+.favori-buttons a
+{
+    width: 50%;
+    display: block;
+    text-decoration: none;
+    padding: 8px 40px;
+    color: white;
+    text-align: center;
+}
+
+.favori-buttons a:first-of-type
+{
+    background-color: rgb(28, 106, 189);
+}
+
+.favori-buttons a:last-of-type
+{
+    margin-left: 16px;
+    background-color: rgb(184, 48, 48);
+}
+
+.favori-details
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 16px;
+}
+
+.favori
+{
+    background-color: white;
+    margin: 32px;
+    padding: 16px;
+    border-radius: 8px;
+}
