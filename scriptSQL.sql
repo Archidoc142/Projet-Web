@@ -342,7 +342,8 @@ VALUES
 INSERT INTO utilisateur (pseudonyme, mdp, courriel, nom, prenom, id_langue)
 VALUES ('Admin', 'adminMotDePasseSecret', 'admin@administration.com', 'Brother', 'Big', 1),
        ('Bob1234', 'abc123', 'bob1234@courriel.com', 'Bobby', 'Robert', 3),
-       ('TeleviseurFan', '12345', 'televiseurfan@courriel.com', 'Pierre', 'Paul', 1);
+       ('TeleviseurFan', '12345', 'televiseurfan@courriel.com', 'Pierre', 'Paul', 1),
+       ('Client123', 'motdepasse', 'monCourriel@123.com', 'Client', 'Monsieur', 2);
 
 INSERT INTO evaluation (note, commentaire, id_utilisateur, modele_televiseur, titre)
 VALUES (3.5, 'Assez bon mais sans plus', 2, '43V35C', 'Mon avis sur ce modele'),
@@ -350,4 +351,15 @@ VALUES (3.5, 'Assez bon mais sans plus', 2, '43V35C', 'Mon avis sur ce modele'),
        (4, 'Quand même bon. Ça me satisfait', 2, '55C350LC', 'Pas pire pantoute'),
        (4, 'Impressionné. Bonne qualité et très performant', 2, 'KD55X77L', 'Surprise!'),
        (5, 'Un bon téléviseur pour moi', 3, 'XR77A95L', 'Cool!'),
-       (5, 'Wow! Je suis totalement impressionné de ce téléviseur. Cest le meilleur que jai vu de ma vie!!!', 3, 'OLED65G3PUA', 'Je sui charmé!');
+       (5, 'Wow! Je suis totalement impressionné de ce téléviseur. Cest le meilleur que jai vu de ma vie!!!', 3, 'OLED65G3PUA', 'Je sui charmé!'),
+       (1, 'Bof', 4, '77OLED848', 'Pas le meilleur');
+
+INSERT INTO favoris (modele_televiseur, id_utilisateur)
+VALUES ('55X9863', 2),
+       ('77OLED848', 2),
+       ('M4500B', 2),
+       ('32V35KC', 3),
+       ('XR77A95L', 3),
+       ('75NANO75UQA', 3),
+       ('M4500B', 4),
+       ('32V35KC', 4);
