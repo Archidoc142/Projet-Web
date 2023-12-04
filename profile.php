@@ -4,7 +4,7 @@
   $userManager = new UserManager($bdd);
 ?>
 
-<main>
+<main id="profile">
 
 <?php
   if (isset($_REQUEST['idUser'])) {
@@ -15,25 +15,28 @@
 
     <form action="profile.php" method="POST">
       <h2><?= $userObj->get_pseudonyme(); ?></h2>
-      <img src="" alt="Photo de profil" />
+
+      <div class="grid">
+        <img src="" alt="Photo de profil" />
   
-      <label for="prenom">Prénom :</label>
-      <input type="text" id="prenom" name="prenom" value="<?= $userObj->get_prenom(); ?>" readonly />
-      
-      <label for="nom">Nom :</label>
-      <input type="text" id="nom" name="nom" value="<?= $userObj->get_nom(); ?>" readonly />
-      
-      <label for="courriel">Courriel :</label>
-      <input type="text" id="courriel" name="courriel" value="<?= $userObj->get_courriel(); ?>" readonly />
-      
-      <label for="langue">Langue :</label>
-      <input type="text" id="langue" name="langue" value="<?= $userObj->get_langue(); ?>" readonly />
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" value="<?= $userObj->get_prenom(); ?>" readonly />
+        
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" value="<?= $userObj->get_nom(); ?>" readonly />
+        
+        <label for="courriel">Courriel :</label>
+        <input type="text" id="courriel" name="courriel" value="<?= $userObj->get_courriel(); ?>" readonly />
+        
+        <label for="langue">Langue :</label>
+        <input type="text" id="langue" name="langue" value="<?= $userObj->get_langue(); ?>" readonly />
+
+        <a>Modifier le profil</a>
+    
+        <a>Changer le mot de passe</a>
+      </div>
     </form>
 
-
-    <button>Modifier le profil</button>
-
-    <a>Changer le mot de passe</a>
 
     <a href="favoris.php?idUser=<?= $userObj->get_id(); ?>">Mes favoris</a>
 

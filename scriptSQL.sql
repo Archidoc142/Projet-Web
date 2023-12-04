@@ -80,7 +80,7 @@ CREATE TABLE marque (
 );
 
 CREATE TABLE evaluation (
-    note INT NOT NULL,
+    note FLOAT NOT NULL,
     commentaire VARCHAR(255),
     id_utilisateur INT NOT NULL,
     modele_televiseur VARCHAR(63) NOT NULL,
@@ -340,5 +340,14 @@ VALUES
        ('55X9863', 15, 1);
 
 INSERT INTO utilisateur (pseudonyme, mdp, courriel, nom, prenom, id_langue)
-VALUES ('Bob1234', 'abc123', 'bob1234@courriel.com', 'Bobby', 'Robert', 3),
+VALUES ('Admin', 'adminMotDePasseSecret', 'admin@administration.com', 'Brother', 'Big', 1),
+       ('Bob1234', 'abc123', 'bob1234@courriel.com', 'Bobby', 'Robert', 3),
        ('TeleviseurFan', '12345', 'televiseurfan@courriel.com', 'Pierre', 'Paul', 1);
+
+INSERT INTO evaluation (note, commentaire, id_utilisateur, modele_televiseur, titre)
+VALUES (3.5, 'Assez bon mais sans plus', 2, '43V35C', 'Mon avis sur ce modele'),
+       (2.5, 'Jaurais préféré mieux', 2, 'XR77A95L', 'Ouain'),
+       (4, 'Quand même bon. Ça me satisfait', 2, '55C350LC', 'Pas pire pantoute'),
+       (4, 'Impressionné. Bonne qualité et très performant', 2, 'KD55X77L', 'Surprise!'),
+       (5, 'Un bon téléviseur pour moi', 3, 'XR77A95L', 'Cool!'),
+       (5, 'Wow! Je suis totalement impressionné de ce téléviseur. Cest le meilleur que jai vu de ma vie!!!', 3, 'OLED65G3PUA', 'Je sui charmé!');
