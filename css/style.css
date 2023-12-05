@@ -6,6 +6,18 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #312b47;
+}
+  
+*::-webkit-scrollbar-thumb {
+    background-color: #a9a9a9;
+}
+
 .grid {
   display: grid;
 }
@@ -45,9 +57,10 @@ h1, h2, h3 {
 
 .nav-header
 {
+    background-color: #e86100;
     justify-content: space-between;
     width: 100%;
-    padding: 8px;
+    padding: 0 15px;
 }
 
 .nav-header, footer
@@ -57,15 +70,9 @@ h1, h2, h3 {
     align-items: center;
 }
 
-.nav-header
-{
-    background-color: #e86100;
-}
-
 footer
 {
     background-color: #000000;
-    color: white;
 }
 
 nav
@@ -145,13 +152,14 @@ nav button
 main
 {
     position: absolute;
+    min-width: 100%;
     top: 64px;
     color: white;
+    padding: 0 2%;
 }
 
-footer
-{
-    position: absolute;
+footer {
+    position: relative;
     bottom: 0;
     width: 100%;
     justify-content: center;
@@ -163,18 +171,76 @@ body
     color: white;
 }
 
-.none {
-    display: none;
+.none { display: none; }
+
+.center { text-align: center; }
+
+.flex { display: flex; }
+
+.titleIndex { margin: 14% 0 5%; }
+
+#nav-fav-btn{ margin-right: 0.5rem; }
+
+.bold { font-weight: 700; }
+
+.mob-hidden { display: none; }
+
+.part2-Index {
+    margin-top: 22%;
+    padding: 2%;
+    background-color: rgb(89, 87, 87);
+    border-radius: 10px;
 }
 
-.center {
-    text-align: center;
+.part2-Index h2 { margin: 3%; }
+
+.part2-Index img{
+    max-width: 60%;
+    border-radius: 2%;
+    margin-bottom: 2%;
 }
 
-.flex {
-    display: flex;
+.part2-Index > div {
+    margin: 3% 0;
+    padding: 6%;
+    background-color: rgba(48, 44, 44, 0.845);
+    border-radius: 15px;
 }
 
-.titleIndex {
-    margin: 50px 0;
+
+@media only screen and (min-width: 968px) {
+    /* General */
+    main { padding: 0; }
+    .mob-hidden { display: block; }
+
+    /* Index */
+    .titleIndex{ font-size: 48px; }
+    .ssIndex{ font-size: 26px; }
+    .part2-Index > div {
+        display: flex;
+        padding: 2%;
+        font-size: 125%;
+        align-items: center;
+    }
+    .part2-Index > div div {
+        text-align: left;
+        line-height: 2;
+        margin-left: 2%;
+    }
+    .part2-Index h2 {
+        margin: 0;
+        font-size: 250%;
+    }
+    .part2-Index img {
+        width: 40%;
+        margin: 0;
+    }
+}
+
+/* Big Screen */
+@media only screen and (min-width: 1600px) {
+    /* General */
+    
+    /* Index */
+    .part2-Index > div div { line-height: 3; }
 }
