@@ -314,7 +314,8 @@ body
 .favori
 {
     background-color: white;
-    margin: 32px;
+    margin: 48px auto;
+    max-width: 600px;
     padding: 16px;
     border-radius: 8px;
     color: black;
