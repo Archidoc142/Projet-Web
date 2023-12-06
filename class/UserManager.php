@@ -6,6 +6,12 @@ class UserManager {
   const SELECT_LANGUE='SELECT * FROM langue';
   const SELECT_LAST_USER ='SELECT * FROM utilisateur';
   const SELECT_USER_ID='SELECT * FROM utilisateur WHERE courriel = :courriel AND mdp = :mdp';
+  const SELECT_MARQUE='SELECT * FROM marque';
+  const SELECT_TELEVISEUR='SELECT televiseur.*, marque.nom as nomTeleviseur  FROM televiseur 
+                          INNER JOIN marque ON televiseur.id_marque = marque.id
+                          INNER JOIN type_ecran ON televiseur.id_type_ecran = type_ecran.id
+                          INNER JOIN resolution ON televiseur.id_resolution = resolution.id
+                          INNER JOIN os ON televiseur.id_os = os.id LIMIT 2';
   private $_bdd;
 
   public function __construct(PDO $bdd) { $this->_bdd = $bdd; }
@@ -16,6 +22,21 @@ class UserManager {
     $result = $query->fetchAll();
     return $result;
 }
+
+public function getMarque(){
+  $query = $this->_bdd->prepare(self::SELECT_MARQUE);
+  $query->execute();
+  $result = $query->fetchAll();
+  return $result;
+}
+
+public function getTeleviseur(){
+  $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR);
+  $query->execute();
+  $result = $query->fetchAll();
+  return $result;
+}
+
 
 public function addUser(User $user) 
 {
