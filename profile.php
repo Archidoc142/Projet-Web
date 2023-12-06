@@ -3,16 +3,16 @@
   $bdd = PDOFactory::getMySQLConnection();
   $userManager = new UserManager($bdd);
   $langueManager = new LangueManager($bdd);
-
-  if (isset($_POST['modification'])){
-    $userModification = new User($_POST);
-    
-  }
 ?>
 
 <main id="profile">
 
 <?php
+  if (isset($_POST['modification'])){
+    $userModification = new User($_POST);
+    $userManager->updateProfile($userModification);
+  }
+  
   if (isset($_REQUEST['idUser'])) {
     $userObj = $userManager->getUserById($_REQUEST['idUser']);
 
@@ -20,7 +20,7 @@
     ?>
 
     <form action="profile?idUser=<?= $userObj->get_id(); ?>" method="POST" class="<?= (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) ? 'myProfile' : '' ;?>">
-      <input type="hidden" name="modification">
+      <input type="hidden" name="modification" id="modification">
       <input type="hidden" name="photo" value="<?= $userObj->get_photo(); ?>">
       <h2><?= $userObj->get_pseudonyme(); ?></h2>
 
