@@ -1,10 +1,11 @@
 <?php
 class UserManager {
   const SELECT_USER_BY_ID = "SELECT utilisateur.*, langue.nom_complet AS langue FROM utilisateur INNER JOIN langue ON utilisateur.id_langue = langue.id WHERE utilisateur.id = :idUser";
+  const UPDATE_USER_INFOS = "UPDATE utilisateur SET pseudonyme = :pseudonyme, courriel = :courriel, nom = :nom, prenom = :prenom, id_langue = :id_langue, photo = :photo";
+
   const SELECT_LANGUE='SELECT * FROM langue';
   const SELECT_LAST_USER ='SELECT * FROM utilisateur';
-  const SELECT_USER_ID='SELECT * FROM utilisateur 
-  WHERE courriel = :courriel AND mdp = :mdp';
+  const SELECT_USER_ID='SELECT * FROM utilisateur WHERE courriel = :courriel AND mdp = :mdp';
   private $_bdd;
 
   public function __construct(PDO $bdd) { $this->_bdd = $bdd; }
@@ -68,6 +69,15 @@ public function getLastUser(){
     }
     else {
       return null;
+    }
+  }
+
+  public function updateProfile(User $newUser) {
+    $methodesGet = preg_grep('/^get_/', get_class_methods($newUser));
+    $paramArray = array();
+
+    foreach ($methodesGet as $nomMethode) {
+      $paramArray[':' . substr($nomMethode, 4)] = $newUser->$nomMethode();
     }
   }
 }

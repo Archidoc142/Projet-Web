@@ -9,6 +9,7 @@ class User {
   private $_prenom;
   private $_nom;
   private $_langue;
+  private $_photo;
 
   // Méthodes magiques
 
@@ -173,6 +174,26 @@ class User {
   public function set_langue($_langue)
   {
     $this->_langue = $_langue;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of _photo
+   */ 
+  public function get_photo()
+  {
+    return $this->_photo;
+  }
+
+  /**
+   * Set the value of _photo
+   *
+   * @return  self
+   */ 
+  public function set_photo($_photo)
+  {
+    $this->_photo = $_photo;
 
     return $this;
   }
