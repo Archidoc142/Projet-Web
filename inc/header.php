@@ -42,9 +42,10 @@
         </div>
         <div class="nav-buttons none">
             <ul>
-                <li><a href="index.html">Marques</a></li>
-                <li><a href="index.html">Téléviseurs</a></li>
-                <li><a href="index.html">Ports</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="marque.php">Marques</a></li>
+                <li><a href="television.php">Téléviseurs</a></li>
+                <li><a href="port.php">Ports</a></li>
             </ul>
         </div>
     </nav>
