@@ -34,11 +34,11 @@
                 </button>
             </div>
         </div>
-        <div class="nav-buttons none">
+        <div class="nav-buttons">
             <ul>
                 <li><a href="index.html">Marques</a></li>
                 <li><a href="index.html">Téléviseurs</a></li>
                 <li><a href="index.html">Ports</a></li>
             </ul>
-        </div-->
+        </div>
     </nav>

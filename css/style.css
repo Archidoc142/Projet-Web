@@ -147,11 +147,13 @@ main
     position: absolute;
     top: 64px;
     color: white;
+    height: 100vh;
+    width: 100%;
 }
 
 footer
 {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     justify-content: center;
@@ -160,6 +162,24 @@ footer
 body
 {
     background-color: rgb(36, 36, 36);
+    color: white;
+    position: relative;
+}
+
+.none {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.titleIndex {
+    margin: 50px 0;
 }
 
 .favori img
@@ -218,4 +238,5 @@ body
     margin: 32px;
     padding: 16px;
     border-radius: 8px;
+    color: black;
 }
