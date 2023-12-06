@@ -64,6 +64,11 @@ a
   cursor: pointer;
 }
 
+a:hover
+{
+  text-shadow: 0px 0px 20px var(--orange);
+}
+
 .nav-header
 {
     background-color: #e86100;
@@ -275,6 +280,31 @@ main#profile .button
   color: white;
 }
 
+main#evaluations h1
+{
+  text-align: center;
+}
+
+main#evaluations > div
+{
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.evaluation 
+{
+  border: 1px dotted white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 10px 0px;
+}
+
+.evaluation h3 
+{
+  color: var(--orange);
+}
+
 .button:hover 
 {
   color: var(--orange);
@@ -330,6 +360,16 @@ main#profile .button
 
   main#profile .button {
     width: 500px;
+  }
+
+  main#evaluations .grid {
+    grid-template-columns: 33% 33% 33%;
+    column-gap: 20px;
+  }
+
+  main#evaluations .grid h1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
   }
 }
 
