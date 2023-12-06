@@ -1,4 +1,4 @@
-<?php require_once("pretraitement.php"); ?>
+<?php require_once("pretraitement.php"); $_SESSION['idUser'] = 4; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,19 +32,26 @@
                     </button>
                     <button id="nav-profile-btn">
                     <a href="profile?idUser=<?= $_SESSION['idUser']; ?>">
-                        <img class="nav-user-img" src="user-170.svg" alt="User" width="32" height="32">
+                        <img class="nav-user-img" src="img/icon/user-170.svg" alt="User" width="32" height="32">
                     </a>
                     </button>
                     <?php 
+                  }
+                  else {
+                    ?>
+                    <a href="register">S'inscrire</a>
+                    <a href="login">Se connecter</a>
+                    <?php
                   }
                   ?>
             </div>
         </div>
         <div class="nav-buttons none">
             <ul>
-                <li><a href="index.html">Marques</a></li>
+                <li><a href="index">Accueil</a></li>
+                <li><a href="marque">Marques</a></li>
                 <li><a href="index.html">Téléviseurs</a></li>
-                <li><a href="index.html">Ports</a></li>
+                <li><a href="port">Ports</a></li>
             </ul>
         </div>
     </nav>
