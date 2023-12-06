@@ -2,6 +2,11 @@
   include_once("inc/header.php");
   $bdd = PDOFactory::getMySQLConnection();
   $userManager = new UserManager($bdd);
+
+  if (isset($_POST['modification'])){
+    $userModification = new User($_POST);
+    
+  }
 ?>
 
 <main id="profile">
@@ -13,11 +18,13 @@
     if (isset($userObj)) {
     ?>
 
-    <form action="profile.php" method="POST">
+    <form action="profile?idUser=<?= $userObj->get_id(); ?>" method="POST">
+      <input type="hidden" name="modification">
+      <input type="hidden" name="photo" value="<?= $userObj->get_photo(); ?>">
       <h2><?= $userObj->get_pseudonyme(); ?></h2>
 
       <div class="grid">
-        <img src="" alt="Photo de profil" />
+        <img src="<?= $userObj->get_photo(); ?>" alt="Photo de profil" />
   
         <label for="prenom">Prénom :</label>
         <input type="text" id="prenom" name="prenom" value="<?= $userObj->get_prenom(); ?>" readonly />
@@ -31,16 +38,50 @@
         <label for="langue">Langue :</label>
         <input type="text" id="langue" name="langue" value="<?= $userObj->get_langue(); ?>" readonly />
 
-        <a>Modifier le profil</a>
+        <?php 
+        if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
+        ?>
+        <a id="modifierProfil">Modifier le profil</a>
     
         <a>Changer le mot de passe</a>
+        <?php 
+        }
+        ?>
       </div>
+
+      <button type="submit" class="button hidden" id="boutonEnregistrer">Enregistrer les modifications</button>
     </form>
 
 
-    <a href="favoris.php?idUser=<?= $userObj->get_id(); ?>">Mes favoris</a>
+    <a href="favoris?idUser=<?= $userObj->get_id(); ?>" class="button">
+      <?php 
+      if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
+      ?>
+        Mes favoris
+      <?php 
+      }
+      else {
+      ?>
+        Favoris
+      <?php 
+      }
+      ?>
+    </a>
 
-    <a href="evaluations.php?idUser=<?= $userObj->get_id(); ?>">Mes évaluatons</a>
+    <a href="evaluations?idUser=<?= $userObj->get_id(); ?>" class="button">
+      <?php 
+      if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
+      ?>
+        Mes évaluations
+      <?php 
+      }
+      else {
+      ?>
+        Évaluations
+      <?php 
+      }
+      ?>
+    </a>
 
     <?php  
     }
