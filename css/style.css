@@ -25,6 +25,11 @@ h1, h2, h3
     font-family: 'Whitney';
 }
 
+a 
+{
+  cursor: pointer;
+}
+
 .nav-header
 {
     justify-content: space-between;
@@ -197,4 +202,9 @@ main#profile .button
 {
   color: var(--orange);
   background: linear-gradient(#000000, #3f3f3f) !important;
+}
+
+.hidden
+{
+  display: none !important;
 }
