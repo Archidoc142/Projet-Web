@@ -32,6 +32,7 @@ main#profile .grid {
   width: 100%;
   grid-template-columns: 50% 50%;
 }
+
 @font-face
 {
     font-family: 'Poppins';
@@ -49,10 +50,16 @@ main#profile .grid {
     font-family: 'Poppins';
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
 
 h1, h2, h3 {
     font-family: 'Whitney';
+}
+
+a 
+{
+  cursor: pointer;
 }
 
 .nav-header
@@ -243,4 +250,65 @@ body
     
     /* Index */
     .part2-Index > div div { line-height: 3; }
+}
+
+.grid 
+{
+  display: grid;
+}
+
+main#profile 
+{
+    padding: 15px;
+}
+
+main#profile, main#profile form 
+{
+    width: 100%;
+}
+
+main#profile .grid img 
+{
+  grid-row-start: 1;
+  grid-row-end: 9;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+main#profile .grid 
+{
+  padding: 10px;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+main#profile .button 
+{
+  margin-top: 30px;
+  display: block;
+  width: 70%;
+  margin: 15px auto;
+}
+
+.button
+{
+  border: 1px solid white;
+  background-color: #000000;
+  padding: 10px 0px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+}
+
+.button:hover 
+{
+  color: var(--orange);
+  background: linear-gradient(#000000, #3f3f3f) !important;
+}
+
+.hidden
+{
+  display: none !important;
 }
