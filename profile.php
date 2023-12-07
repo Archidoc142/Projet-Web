@@ -1,6 +1,5 @@
 <?php
   include_once("inc/header.php");
-  $bdd = PDOFactory::getMySQLConnection();
   $userManager = new UserManager($bdd);
   $langueManager = new LangueManager($bdd);
 ?>
@@ -16,12 +15,21 @@
   if (isset($_REQUEST['idUser'])) {
     $userObj = $userManager->getUserById($_REQUEST['idUser']);
 
+    $isConnectedUser = (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id());
+
     if (isset($userObj)) {
     ?>
 
     <form action="profile?idUser=<?= $userObj->get_id(); ?>" method="POST" class="<?= (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) ? 'myProfile' : '' ;?>">
+      <?php 
+        if ($isConnectedUser) {
+      ?>
       <input type="hidden" name="modification" id="modification">
       <input type="hidden" name="photo" value="<?= $userObj->get_photo(); ?>">
+      <?php 
+        }
+      ?>
+
       <h2><?= $userObj->get_pseudonyme(); ?></h2>
 
       <div class="grid">
@@ -34,26 +42,37 @@
         
         <label for="courriel">Courriel :</label>
         <input type="text" id="courriel" name="courriel" value="<?= $userObj->get_courriel(); ?>" readonly />
-        
-        <label for="id_langue">Langue :</label>
-        <select name="id_langue" id="id_langue" disabled>
-          <?php
-          $langues = $langueManager->getLangues();
-          foreach ($langues as $langueObj) {
-            ?>
-            <option value="<?= $langueObj->get_id();?>" <?= ($langueObj->get_id() == $userObj->get_id_langue()) ? 'selected' : ''; ?>><?= $langueObj->get_nom_complet();?></option>
-            <?php
-          }
-          ?>
-        </select>
 
-        <?php 
-        if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
-        ?>
-        <a id="modifierProfil">Modifier le profil</a>
+        <?php
+        if ($isConnectedUser) {
+          ?>
+          <label for="selectLangue">Langue :</label>
+
+          <select id="selectLangue" disabled>
+            <?php
+            $langues = $langueManager->getLangues();
+            foreach ($langues as $langueObj) {
+              ?>
+              <option value="<?= $langueObj->get_id();?>" <?= ($langueObj->get_id() == $userObj->get_id_langue()) ? 'selected' : ''; ?>><?= $langueObj->get_nom_complet();?></option>
+              <?php
+            }
+            ?>
+          </select>
+
+          <input type="hidden" id="id_langue" name="id_langue" value="<?= $userObj->get_id_langue();?>">
+          
+          <a id="modifierProfil">Modifier le profil</a>
     
-        <a>Changer le mot de passe</a>
-        <?php 
+          <a>Changer le mot de passe</a>
+          <?php  
+        }
+        else {
+          $langue = $langueManager->getLangueById($userObj->get_id_langue());
+          ?>
+          <label for="id_langue">Langue :</label>
+          <input type="text" name="id_langue" value="<?= $langue->get_nom_complet(); ?>" readonly>
+          
+          <?php 
         }
         ?>
       </div>
@@ -62,7 +81,7 @@
       
       <a href="favoris?idUser=<?= $userObj->get_id(); ?>" class="button">
         <?php 
-        if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
+        if ($isConnectedUser) {
         ?>
           Mes favoris
         <?php 
@@ -77,7 +96,7 @@
   
       <a href="evaluations?idUser=<?= $userObj->get_id(); ?>" class="button">
         <?php 
-        if (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) {
+        if ($isConnectedUser) {
         ?>
           Mes évaluations
         <?php 

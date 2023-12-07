@@ -18,8 +18,10 @@ function jsMyProfile() {
   }
 
   let inputsProfile = document.querySelectorAll("main#profile input");
-  let selectLangue = document.getElementById("id_langue");
+  let selectLangue = document.getElementById("selectLangue");
+  let copieSelectLangue = document.getElementById("id_langue");
   let btnEnregistrer = document.getElementById("boutonEnregistrer");
+  let formulaire = document.querySelector("form");
   
   btnModifProfile.addEventListener("click", function() {
     let readOnly;
@@ -46,5 +48,9 @@ function jsMyProfile() {
     if (!confirm("Êtes-vous certains de vouloir enregistrer les modifications?")) {
       event.preventDefault();
     }
+  });
+
+  selectLangue.addEventListener("change", function() {
+    copieSelectLangue.value = selectLangue.value;
   });
 }

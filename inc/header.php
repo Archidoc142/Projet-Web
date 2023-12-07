@@ -1,4 +1,6 @@
-<?php require_once("pretraitement.php"); $_SESSION['idUser'] = 1; ?>
+<?php require_once("pretraitement.php"); $_SESSION['idUser'] = 1;
+  $userManager = new UserManager($bdd);
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,6 +26,8 @@
             <div class="nav-header-right">
                 <?php 
                   if (isset($_SESSION['idUser'])) {
+                    $photoUser = $userManager->getUserPhoto($_SESSION['idUser']);
+                    $photoValide = (isset($photoUser) && !empty($photoUser));
                 ?>
                     <button id="nav-fav-btn">
                         <a href="favoris?idUser=<?= $_SESSION['idUser']; ?>">
@@ -32,7 +36,7 @@
                     </button>
                     <button id="nav-profile-btn">
                     <a href="profile?idUser=<?= $_SESSION['idUser']; ?>">
-                        <img class="nav-user-img" src="img/icon/user-170.svg" alt="User" width="32" height="32">
+                        <img class="nav-user-img <?= !$photoValide ? 'noirBlanc' : '' ; ?>" src="<?= $photoValide ? $photoUser : 'img/icon/user-170.svg' ;?>" alt="User" width="32" height="32">
                     </a>
                     </button>
                     <?php 
