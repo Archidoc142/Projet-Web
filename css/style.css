@@ -59,7 +59,14 @@ h1, h2, h3 {
 
 a 
 {
+  color: white;
+  text-decoration: underline;
   cursor: pointer;
+}
+
+a:hover
+{
+  text-shadow: 0px 0px 15px var(--orange), 0px 0px 10px var(--orange);
 }
 
 .nav-header
@@ -99,9 +106,21 @@ nav button
 
 #nav-menu-img, #nav-fav-img { fill: white; }
 
-.nav-user-img
+.nav-user-img 
+{
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.nav-user-img.noirBlanc
 {
     filter: invert(98%) sepia(100%) saturate(20%) hue-rotate(208deg) brightness(104%) contrast(100%);
+}
+
+.nav-header-right 
+{
+  display: grid;
+  column-gap: 10px;
 }
 
 .nav-header a, .nav-header-left, .nav-header-right, #nav-menu-btn
@@ -341,6 +360,101 @@ body
     font-size: 18px;
 }
 
+p.message 
+{
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.grid 
+{
+  display: grid;
+}
+
+main#profile 
+{
+    padding: 15px;
+}
+
+main#profile
+{
+  width: 100%;
+}
+
+main#profile form 
+{
+  width: 80%;
+  margin: auto;
+}
+
+main#profile .grid img 
+{
+  max-width: 100%;
+  max-height: 300px;
+  margin: auto;
+}
+
+main#profile .grid 
+{
+  padding: 10px;
+  grid-template-columns: 100%;
+  row-gap: 10px;
+}
+
+main#profile .button 
+{
+  margin-top: 30px;
+  display: block;
+  width: 70%;
+  margin: 15px auto;
+}
+
+.button
+{
+  border: 1px solid white;
+  background-color: #000000;
+  padding: 10px 0px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+}
+
+main#evaluations h1
+{
+  text-align: center;
+}
+
+main#evaluations > div
+{
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.evaluation 
+{
+  border: 1px dotted white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 10px 0px;
+}
+
+.evaluation h3 
+{
+  color: var(--orange);
+}
+
+.button:hover 
+{
+  color: var(--orange);
+  background: linear-gradient(#000000, #3f3f3f);
+}
+
+.hidden
+{
+  display: none;
+}
+
 @media only screen and (min-width: 968px) {
     /* General */
     main { padding: 0; }
@@ -413,6 +527,34 @@ body
         margin-bottom : 20px;
         margin-top: 20px;
     }
+  
+    main#profile .grid img {
+      grid-row-start: 1;
+      grid-row-end: 5;
+    }
+
+    main#profile .myProfile .grid img {
+      grid-row-end: 6;
+    }
+
+    main#profile .grid {
+      grid-template-columns: 25% 37.5% 37.5%;
+      column-gap: 15px;
+    }
+
+    main#profile .button {
+      width: 500px;
+    }
+
+    main#evaluations .grid {
+      grid-template-columns: 33% 33% 33%;
+      column-gap: 20px;
+    }
+
+    main#evaluations .grid h1 {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
 }
 
 /* Big Screen */
@@ -426,61 +568,6 @@ body
     .grid3C { line-height: 6.5; }
 }
 
-main#profile 
-{
-    padding: 15px;
-}
-
-main#profile, main#profile form 
-{
-    width: 100%;
-}
-
-main#profile .grid img 
-{
-  grid-row-start: 1;
-  grid-row-end: 9;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-main#profile .grid 
-{
-  padding: 10px;
-  width: 100%;
-  grid-template-columns: 50% 50%;
-  column-gap: 10px;
-  row-gap: 10px;
-}
-
-main#profile .button 
-{
-  margin-top: 30px;
-  display: block;
-  width: 70%;
-  margin: 15px auto;
-}
-
-.button
-{
-  border: 1px solid white;
-  background-color: #000000;
-  padding: 10px 0px;
-  border-radius: 15px;
-  text-align: center;
-  color: white;
-}
-
-.button:hover 
-{
-  color: var(--orange);
-  background: linear-gradient(#000000, #3f3f3f);
-}
-
-.hidden
-{
-  display: none;
-}
 
 .favori img
 {

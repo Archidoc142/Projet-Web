@@ -5,4 +5,6 @@
     }
     
     include_once('autoloader.php');
+
+    $bdd = PDOFactory::getMySQLConnection();
 ?>
