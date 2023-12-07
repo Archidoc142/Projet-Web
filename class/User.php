@@ -4,6 +4,7 @@ class User {
 
   private $_id;
   private $_pseudonyme;
+  private $_mdp;
   private $_courriel;
   private $_prenom;
   private $_nom;
@@ -92,6 +93,27 @@ class User {
   public function set_courriel($_courriel)
   {
     $this->_courriel = $_courriel;
+
+    return $this;
+  }
+
+
+   /**
+   * Get the value of _courriel
+   */ 
+  public function get_mdp()
+  {
+    return $this->_mdp;
+  }
+
+  /**
+   * Set the value of _courriel
+   *
+   * @return  self
+   */ 
+  public function set_mdp($_mdp)
+  {
+    $this->_mdp = $_mdp;
 
     return $this;
   }

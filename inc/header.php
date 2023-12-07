@@ -54,7 +54,7 @@
             <ul>
                 <li><a href="index">Accueil</a></li>
                 <li><a href="marque">Marques</a></li>
-                <li><a href="index.html">Téléviseurs</a></li>
+                <li><a href="television">Téléviseurs</a></li>
                 <li><a href="port">Ports</a></li>
             </ul>
         </div>
