@@ -376,19 +376,26 @@ body
     .containerArticle img { 
         width: 50%;
         margin-bottom: 0;
+        object-fit: contain;
     }
 
     .containerArticle h2 {
         background-color: #403e44;
         border-radius: 5px;
         padding: 10px;
+        margin-top: 1%;
     }
+
+    .containerArticle > div { width: 50%; }
     
     .grid3C {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin-top: 2%;
-    }    
+        line-height: 3;
+    }
+
+    .grid3C p { font-size: 120%; }
 
     /* Seriously??????? */
     #register{
@@ -414,4 +421,123 @@ body
     
     /* Index */
     .part2-Index > div div { line-height: 3; }
+
+    /* Article */
+    .grid3C { line-height: 6.5; }
+}
+
+main#profile 
+{
+    padding: 15px;
+}
+
+main#profile, main#profile form 
+{
+    width: 100%;
+}
+
+main#profile .grid img 
+{
+  grid-row-start: 1;
+  grid-row-end: 9;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+main#profile .grid 
+{
+  padding: 10px;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+main#profile .button 
+{
+  margin-top: 30px;
+  display: block;
+  width: 70%;
+  margin: 15px auto;
+}
+
+.button
+{
+  border: 1px solid white;
+  background-color: #000000;
+  padding: 10px 0px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+}
+
+.button:hover 
+{
+  color: var(--orange);
+  background: linear-gradient(#000000, #3f3f3f);
+}
+
+.hidden
+{
+  display: none;
+}
+
+.favori img
+{
+    width: 120px;
+    border-radius: 8px;
+}
+
+.favori-row
+{
+    display: flex;
+}
+
+.favori-buttons
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 8px;
+}
+
+.favori-buttons a
+{
+    width: 50%;
+    display: block;
+    text-decoration: none;
+    padding: 8px 40px;
+    color: white;
+    text-align: center;
+}
+
+.favori-buttons a:first-of-type
+{
+    background-color: rgb(28, 106, 189);
+}
+
+.favori-buttons a:last-of-type
+{
+    margin-left: 16px;
+    background-color: rgb(184, 48, 48);
+}
+
+.favori-details
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 16px;
+}
+
+.favori
+{
+    background-color: white;
+    margin: 48px auto;
+    max-width: 600px;
+    padding: 16px;
+    border-radius: 8px;
+    color: black;
 }

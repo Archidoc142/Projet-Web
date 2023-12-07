@@ -24,7 +24,7 @@ include_once 'inc/header.php';
             <div class="grid3C">
                 <div><p><span class='bold'>Modèle</span> : <?php echo $bddResults['modele'] ?></p><p><span class='bold'>Marque</span> : <?php echo $bddResults['marque'] ?></p><p><span class='bold'>OS</span> : <?php echo $bddResults['os'] ?></p></div>
                 <div><p><span class='bold'>Type écran</span> : <?php echo $bddResults['type_ecran'] ?></p><p><span class='bold'>Résolution</span> : <?php echo $bddResults['resolution'] ?></p><p><span class='bold'>Fréquence</span> : <?php echo $bddResults['frequence'] ?> Hz</p></div>
-                <div><?php if ($bddResults['hdr'] == 1) { echo "<p><span class='bold'>HDR</span> : Oui</p>"; } ?><span class='bold'><p><span class='bold'>Taille</span> : <?php echo $bddResults['taille'] ?>"</p><p><span class='bold'>Prix</span> : <?php echo $bddResults['prix'] ?> $</p></div>
+                <div><p><span class='bold'>HDR</span> :<?php echo ($bddResults['hdr'] == 1) ? "Oui" : "Non"; ?></p><span class='bold'><p><span class='bold'>Taille</span> : <?php echo $bddResults['taille'] ?>"</p><p><span class='bold'>Prix</span> : <?php echo $bddResults['prix'] ?> $</p></div>
             </div>
         </div>
     </div>
