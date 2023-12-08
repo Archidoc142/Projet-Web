@@ -28,5 +28,6 @@ include_once 'inc/header.php';
             </div>
         </div>
     </div>
+    <a href="evaluations?modele=<?= $bddResults['modele'];?>" class="button">Évaluations</a>
 
 <?php include_once 'inc/footer.php';?>
