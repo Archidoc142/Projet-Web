@@ -64,10 +64,9 @@
 
           <input type="hidden" id="id_langue" name="id_langue" value="<?= $userObj->get_id_langue();?>">
           
-          <a class="hidden" id="btnChangeMdp">Changer le mot de passe</a>
-          
           <a id="modifierProfil">Modifier le profil</a>
           
+          <a class="hidden" id="btnChangeMdp">Changer le mot de passe</a>
         </div>
 
         <?php  

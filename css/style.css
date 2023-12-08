@@ -434,10 +434,7 @@ main#profile #changeMdpBox > div
 
 main#profile .button 
 {
-  margin-top: 30px;
-  display: block;
   width: 70%;
-  margin: 15px auto;
 }
 
 .button
@@ -448,6 +445,10 @@ main#profile .button
   border-radius: 15px;
   text-align: center;
   color: white;
+  margin-top: 30px;
+  display: block;
+  width: 50%;
+  margin: 15px auto;
 }
 
 main#evaluations h1
