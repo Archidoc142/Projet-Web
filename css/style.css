@@ -55,6 +55,7 @@ main#profile .grid {
 
 h1, h2, h3 {
     font-family: 'Whitney';
+  margin-bottom: 10px;
 }
 
 a 
@@ -394,11 +395,41 @@ main#profile .grid img
   margin: auto;
 }
 
-main#profile .grid 
+main#profile .grid
 {
-  padding: 10px;
-  grid-template-columns: 100%;
   row-gap: 10px;
+}
+
+main#profile form .grid 
+{
+  grid-template-columns: 100%;
+  padding: 10px;
+}
+
+main#profile #changeMdpBox 
+{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+main#profile #changeMdpBox > div
+{
+  background-color: black;
+  border-radius: 20px;
+  padding: 30px;
+
+  box-shadow: 0 0 25px 0 var(--orange),
+              0 0 80px gray inset;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
 }
 
 main#profile .button 
@@ -452,7 +483,7 @@ main#evaluations > div
 
 .hidden
 {
-  display: none;
+  display: none !important;
 }
 
 @media only screen and (min-width: 968px) {
@@ -528,7 +559,7 @@ main#evaluations > div
         margin-top: 20px;
     }
   
-    main#profile .grid img {
+    main#profile form .grid img {
       grid-row-start: 1;
       grid-row-end: 5;
     }
@@ -537,12 +568,21 @@ main#evaluations > div
       grid-row-end: 6;
     }
 
-    main#profile .grid {
+    main#profile .myProfile.modifying .grid img {
+      grid-row-end: 7;
+    }
+
+    main#profile form:first-of-type .grid {
       grid-template-columns: 25% 37.5% 37.5%;
       column-gap: 15px;
     }
 
-    main#profile .button {
+    main#profile #changeMdpBox .grid input, main#profile #changeMdpBox .grid label {
+      grid-template-columns: 50% 50%;
+      grid-column: span 1;
+    }
+
+    main#profile form:first-of-type .button {
       width: 500px;
     }
 

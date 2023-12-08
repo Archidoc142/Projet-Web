@@ -3,6 +3,7 @@ class UserManager {
   const SELECT_USER_BY_ID = "SELECT utilisateur.* FROM utilisateur WHERE utilisateur.id = :idUser";
   const SELECT_USER_PHOTO = "SELECT photo FROM utilisateur WHERE id = :idUser";
   const UPDATE_USER_INFOS = "UPDATE utilisateur SET courriel = :courriel, nom = :nom, prenom = :prenom, id_langue = :id_langue, photo = :photo WHERE id = :idUser";
+  const UPDATE_USER_PASSWORD = "UPDATE utilisateur SET mdp = :nouveauMdp WHERE id = :idUser AND mdp = :ancienMdp";
 
   const SELECT_LANGUE='SELECT * FROM langue';
   const SELECT_LAST_USER ='SELECT * FROM utilisateur';
@@ -88,13 +89,10 @@ public function getLastUser(){
     }
   }
 
-  public function updateProfile(User $newUser) {
+  public function updateProfile(User $newUser) : string {
     if (!isset($_SESSION['idUser']) || $_SESSION['idUser'] <> $_REQUEST['idUser'] || !is_numeric($newUser->get_id_langue())) {
-      var_dump($newUser->get_id_langue());
-      ?>
-      Erreur parmi les données reçues! L'enregistrement n'a pas fonctionné!
-      <?php
-      return;
+      $messageTraitement = "Erreur parmi les données reçues! L'enregistrement n'a pas fonctionné!";
+      return $messageTraitement;
     }
 
     $paramArray = array(
@@ -108,24 +106,47 @@ public function getLastUser(){
 
     $query = $this->_bdd->prepare(self::UPDATE_USER_INFOS);
 
-    $result = $query->execute($paramArray);
-
-  ?>
-  <p class="message">
-  <?php
-    if ($result > 0) {
-      ?>
-      L'enregistrement a bien fonctionné!
-      <?php
+    $query->execute($paramArray);
+    
+    if ($query->rowCount() > 0) {
+      $messageTraitement = "L'enregistrement a bien fonctionné!";
     }
     else {
-      ?>
-      Erreur! L'enregistrement n'a pas fonctionné!
-      <?php
+      $messageTraitement = "Erreur! L'enregistrement n'a pas fonctionné!";
     }
-  ?>
-  </p>
-  <?php
+
+    return $messageTraitement;
+  }
+
+  public function updatePassword() : string{
+    if (!isset($_SESSION['idUser']) || !isset($_POST['ancienMdp']) || !isset($_POST['nouveauMdp']) || !isset($_POST['confirmMdp']) || $_SESSION['idUser'] <> $_REQUEST['idUser']) {
+      $messageTraitement = "Erreur parmi les données reçues! L'enregistrement n'a pas fonctionné!";
+      return $messageTraitement;
+    }
+
+    if ($_POST['nouveauMdp'] <> $_POST['confirmMdp']) {
+      $messageTraitement = "Erreur! La confirmation du nouveau mot de passe a échouée!";
+      return $messageTraitement;
+    }
+
+    $paramArray = array(
+      ':idUser' => $_SESSION['idUser'],
+      ':ancienMdp' => $_POST['ancienMdp'],
+      ':nouveauMdp' => $_POST['nouveauMdp']
+    );
+
+    $query = $this->_bdd->prepare(self::UPDATE_USER_PASSWORD);
+
+    $query->execute($paramArray);
+    
+    if ($query->rowCount() > 0) {
+      $messageTraitement = "Le changement de mot de passe a bien fonctionné!";
+    }
+    else {
+      $messageTraitement = "Erreur! Le changement de mot de passe n'a pas fonctionné!";
+    }
+
+    return $messageTraitement;
   }
 }
 ?>

@@ -1,17 +1,18 @@
 <?php
   include_once("inc/header.php");
-  $userManager = new UserManager($bdd);
-  $langueManager = new LangueManager($bdd);
 ?>
 
 <main id="profile">
 
 <?php
-  if (isset($_POST['modification'])){
-    $userModification = new User($_POST);
-    $userManager->updateProfile($userModification);
+  if (isset($messageTraitement) && !empty($messageTraitement)) {
+    ?>
+    
+    <p class="message"><?= $messageTraitement;?></p>
+    
+    <?php
   }
-  
+
   if (isset($_REQUEST['idUser'])) {
     $userObj = $userManager->getUserById($_REQUEST['idUser']);
 
@@ -21,19 +22,21 @@
     ?>
 
     <form action="profile?idUser=<?= $userObj->get_id(); ?>" method="POST" class="<?= (isset($_SESSION['idUser']) && $_SESSION['idUser'] == $userObj->get_id()) ? 'myProfile' : '' ;?>">
-      <?php 
-        if ($isConnectedUser) {
-      ?>
-      <input type="hidden" name="modification" id="modification">
-      <input type="hidden" name="photo" value="<?= $userObj->get_photo(); ?>">
-      <?php 
-        }
-      ?>
-
       <h2><?= $userObj->get_pseudonyme(); ?></h2>
 
       <div class="grid">
         <img src="<?= (!empty($userObj->get_photo())) ? $userObj->get_photo() : 'img/icon/user-170.svg'; ?>" alt="Photo de profil" />
+
+        <?php 
+          if ($isConnectedUser) {
+        ?>
+        <input type="hidden" name="modificationProfil" id="modificationProfil">
+        <label class="hidden" for="photo" id="labelPhoto">URL de la photo de profil : </label>
+        <input type="hidden" id="photo" name="photo" value="<?= $userObj->get_photo(); ?>">
+        <?php 
+          }
+        ?>
+
         <label for="prenom">Prénom :</label>
         <input type="text" id="prenom" name="prenom" value="<?= $userObj->get_prenom(); ?>" readonly />
         
@@ -61,20 +64,25 @@
 
           <input type="hidden" id="id_langue" name="id_langue" value="<?= $userObj->get_id_langue();?>">
           
+          <a class="hidden" id="btnChangeMdp">Changer le mot de passe</a>
+          
           <a id="modifierProfil">Modifier le profil</a>
-    
-          <a>Changer le mot de passe</a>
-          <?php  
+          
+        </div>
+
+        <?php  
         }
         else {
           $langue = $langueManager->getLangueById($userObj->get_id_langue());
-          ?>
+        ?>
           <label for="id_langue">Langue :</label>
           <input type="text" name="id_langue" value="<?= $langue->get_nom_complet(); ?>" readonly>
           
           <?php 
         }
         ?>
+
+
       </div>
 
       <button type="submit" class="button hidden" id="boutonEnregistrer">Enregistrer les modifications</button>
@@ -109,6 +117,30 @@
         ?>
       </a>
     </form>
+
+    <?php
+    if ($isConnectedUser) {
+    ?>
+        <form id="changeMdpBox" class="hidden" method="post" action="profile?idUser=<?= $userObj->get_id(); ?>">
+          <div>
+            <h3>Changement de mot de passe</h3>
+            <div class="grid">
+              <label for="ancienMdp">Ancien mot de passe :</label>
+              <input id="ancienMdp" name="ancienMdp" type="password">
+  
+              <label for="nouveauMdp">Nouveau mot de passe :</label>
+              <input id="nouveauMdp" name="nouveauMdp" type="password">
+  
+              <label for="confirmMdp">Confirmer le nouveau mot de passe :</label>
+              <input id="confirmMdp" name="confirmMdp" type="password">
+  
+              <button class="button" id="changeMdpConfirm" type="submit">Confirmer</button>
+              <button class="button" id="changeMdpAnnuler" type="reset">Annuler</button>
+          </div>
+        </form>
+      <?php
+    }
+    ?>
 
     <?php  
     }
