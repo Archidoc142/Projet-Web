@@ -50,21 +50,21 @@
 
         }
 
-        public function getTeleviseurByModele($_modele)
-        {
-            $query = $this->_bdd->prepare(SELF::SELECT_TV_BY_MODEL);
-            $query->bindParam(':modele', $_modele);
-            $query->execute();
+        // public function getTeleviseurByModele($_modele)
+        // {
+        //     $query = $this->_bdd->prepare(SELF::SELECT_TV_BY_MODEL);
+        //     $query->bindParam(':modele', $_modele);
+        //     $query->execute();
 
-            $result = $query->fetch();
+        //     $result = $query->fetch();
 
-            $ports = $this->getPortsByModel($_modele);
+        //     $ports = $this->getPortsByModel($_modele);
 
-            $tv = new Televiseur($result, $ports);
+        //     $tv = new Televiseur($result, $ports);
 
-            return $tv;
+        //     return $tv;
 
-        }
+        // }
 
         public function getPortsByModel($_modele) : array
         {
