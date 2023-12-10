@@ -1,4 +1,8 @@
-<?php require_once("pretraitement.php"); ?>
+<?php 
+    require_once("pretraitement.php"); 
+    require_once 'class/PDOFactory.php';
+    $bdd = PDOFactory::getMySQLConnection();
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
