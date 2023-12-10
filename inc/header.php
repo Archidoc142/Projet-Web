@@ -1,4 +1,4 @@
-<?php require_once("pretraitement.php"); $_SESSION['idUser'] = 3; ?>
+<?php require_once("pretraitement.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
