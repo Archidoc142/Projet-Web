@@ -340,11 +340,11 @@ VALUES
        ('55X9863', 13, 1),
        ('55X9863', 15, 1);
 
-INSERT INTO utilisateur (pseudonyme, mdp, courriel, nom, prenom, id_langue)
-VALUES ('Admin', 'adminMotDePasseSecret', 'admin@administration.com', 'Brother', 'Big', 1),
-       ('Bob1234', 'abc123', 'bob1234@courriel.com', 'Bobby', 'Robert', 3),
-       ('TeleviseurFan', '12345', 'televiseurfan@courriel.com', 'Pierre', 'Paul', 1),
-       ('Client123', 'motdepasse', 'monCourriel@123.com', 'Client', 'Monsieur', 2);
+INSERT INTO utilisateur (pseudonyme, mdp, courriel, nom, prenom, id_langue, photo)
+VALUES ('Admin', 'adminMotDePasseSecret', 'admin@administration.com', 'Brother', 'Big', 1, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ62a8cZa1DEJWUi1VO6yzq37v49-eU0dIsKA&usqp=CAU"),
+       ('Bob1234', 'abc123', 'bob1234@courriel.com', 'Bobby', 'Robert', 3, "https://m.media-amazon.com/images/I/61Z0O2l4-zL._AC_UF1000,1000_QL80_.jpg"),
+       ('TeleviseurFan', '12345', 'televiseurfan@courriel.com', 'Pierre', 'Paul', 1, "https://www.mineraux.fr/wp-content/uploads/2020/12/pierre-meteorite-caracteristiques.jpg"),
+       ('Client123', 'motdepasse', 'monCourriel@123.com', 'Client', 'Monsieur', 2, "https://cdn-icons-png.flaticon.com/512/6009/6009864.png");
 
 INSERT INTO evaluation (note, commentaire, id_utilisateur, modele_televiseur, titre)
 VALUES (3.5, 'Assez bon mais sans plus', 2, '43V35C', 'Mon avis sur ce modele'),
