@@ -123,7 +123,7 @@
             return $televiseurs;
         }
     
-        public function getTeleviseurByModele(string $modele) 
+        public function getTeleviseurObjectByModele(string $modele) 
         {
           $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_OBJECT_BY_MODELE);
       

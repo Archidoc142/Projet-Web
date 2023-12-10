@@ -86,7 +86,17 @@
 
       <button type="submit" class="button hidden" id="boutonEnregistrer">Enregistrer les modifications</button>
       
-      <a href="favoris?idUser=<?= $userObj->get_id(); ?>" class="button">
+      <?php 
+        if ($isConnectedUser) {
+        ?>
+        <a href="favoris" class="button">
+          Mes favoris
+        </a>
+        <?php 
+        }
+      ?> 
+
+ <!--     <a href="favoris?idUser=<?= $userObj->get_id(); ?>" class="button">
         <?php 
         if ($isConnectedUser) {
         ?>
@@ -100,6 +110,7 @@
         }
         ?>
       </a>
+  -->
   
       <a href="evaluations?idUser=<?= $userObj->get_id(); ?>" class="button">
         <?php 

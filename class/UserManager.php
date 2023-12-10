@@ -157,8 +157,8 @@ public function getLastUser(){
   public function getFavoris()
   {
     $favoris = array();
-    // TODO: REMPLACER 3 PAR L'ID UTILISATEUR DE LA SESSION
-    $result = $this->_bdd->query(SELF::SELECT_FAVORIS . " WHERE f.id_utilisateur = 3")->fetchAll();
+
+    $result = $this->_bdd->query(SELF::SELECT_FAVORIS . " WHERE f.id_utilisateur = " . $_SESSION['idUser'])->fetchAll();
 
     foreach($result as $tv)
     {
