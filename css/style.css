@@ -657,13 +657,15 @@ div.portDiv:hover
 
 .favori img
 {
-    width: 120px;
-    border-radius: 8px;
+    width: 280px;
+    margin: 16px auto;
+    object-fit: cover;
 }
 
 .favori-row
 {
     display: flex;
+    flex-direction: column;
 }
 
 .favori-buttons
@@ -672,8 +674,7 @@ div.portDiv:hover
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 16px;
-    padding-bottom: 8px;
+    padding: 16px;
 }
 
 .favori-buttons a
@@ -681,7 +682,7 @@ div.portDiv:hover
     width: 50%;
     display: block;
     text-decoration: none;
-    padding: 8px 40px;
+    padding: 12px 40px;
     color: white;
     text-align: center;
 }
@@ -708,9 +709,21 @@ div.portDiv:hover
 .favori
 {
     background-color: white;
-    margin: 48px auto;
-    max-width: 600px;
+    margin: 0 auto 48px auto;
+    max-width: 550px;
     padding: 16px;
     border-radius: 8px;
     color: black;
+}
+
+.modele
+{
+    margin-bottom: 16px;
+}
+
+.page-title
+{
+    text-align: center;
+    font-size: 1.5em;
+    padding: 64px 0;
 }
