@@ -1,6 +1,4 @@
-<?php require_once("pretraitement.php");
-  $userManager = new UserManager($bdd);
-?>
+<?php require_once("pretraitement.php"); $_SESSION['idUser'] = 3; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
