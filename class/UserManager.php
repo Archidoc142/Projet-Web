@@ -1,4 +1,6 @@
 <?php
+require_once('./class/TeleviseurManager.php');
+
 class UserManager {
   const SELECT_USER_BY_ID = "SELECT utilisateur.* FROM utilisateur WHERE utilisateur.id = :idUser";
   const SELECT_USER_PHOTO = "SELECT photo FROM utilisateur WHERE id = :idUser";
@@ -8,6 +10,9 @@ class UserManager {
   const SELECT_LANGUE='SELECT * FROM langue';
   const SELECT_LAST_USER ='SELECT * FROM utilisateur';
   const SELECT_USER_ID='SELECT * FROM utilisateur WHERE courriel = :courriel AND mdp = :mdp';
+
+  const SELECT_FAVORIS = TeleviseurManager::SELECT_TVS . " JOIN favoris f ON f.modele_televiseur = t.modele";
+
   private $_bdd;
 
   public function __construct(PDO $bdd) { $this->_bdd = $bdd; }
@@ -147,6 +152,22 @@ public function getLastUser(){
     }
 
     return $messageTraitement;
+  }
+
+  public function getFavoris()
+  {
+    $favoris = array();
+    // TODO: REMPLACER 3 PAR L'ID UTILISATEUR DE LA SESSION
+    $result = $this->_bdd->query(SELF::SELECT_FAVORIS . " WHERE f.id_utilisateur = 3")->fetchAll();
+
+    foreach($result as $tv)
+    {
+        // $ports = $this->getPortsByModel($tv['modele']);
+        array_push($favoris, new Televiseur($tv, array()/*, $ports*/));
+    }
+
+    return $favoris;
+
   }
 }
 ?>
