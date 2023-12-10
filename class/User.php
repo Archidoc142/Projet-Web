@@ -8,7 +8,7 @@ class User {
   private $_courriel;
   private $_prenom;
   private $_nom;
-  private $_langue;
+  private $_id_langue;
   private $_photo;
 
   // Méthodes magiques
@@ -159,21 +159,21 @@ class User {
   }
 
   /**
-   * Get the value of _langue
+   * Get the value of _id_langue
    */ 
-  public function get_langue()
+  public function get_id_langue()
   {
-    return $this->_langue;
+    return $this->_id_langue;
   }
 
   /**
-   * Set the value of _langue
+   * Set the value of _id_langue
    *
    * @return  self
    */ 
-  public function set_langue($_langue)
+  public function set_id_langue($_id_langue)
   {
-    $this->_langue = $_langue;
+    $this->_id_langue = $_id_langue;
 
     return $this;
   }

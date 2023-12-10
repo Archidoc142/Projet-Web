@@ -17,18 +17,18 @@ include_once 'inc/header.php';
 
     <div class="part2-Index center">
         <h2>Téléviseur du moment</h2>
-        <?php for ($i=0; $i < 2; $i++) { 
+        <?php foreach ($fetched as $row) { 
             echo "<div>";
-            echo "<img src='img/tv/" . $fetched[$i]['modele'] . ".png' alt='img_tv'>";
-            echo "<div><h3>" . $fetched[$i]['nom'] . "</h3>";
+            echo "<a href='article?modele=" . rawurlencode($row['modele']) . "' draggable='false'><img src='img/tv/" . $row['modele'] . ".png' alt='img_tv' draggable='false'></a>";
+            echo "<div><h3>" . $row['nom'] . "</h3>";
             echo "<article class='mob-hidden'>
-                    <p><span class='bold'>Modèle</span> : " . $fetched[$i]['modele'] . "</p>
-                    <p><span class='bold'>Marque</span> : " . $fetched[$i]['marque'] . "</p>
-                    <p><span class='bold'>Type écran</span> : " . $fetched[$i]['type_ecran'] . "</p>
-                    <p><span class='bold'>Résolution</span> : " . $fetched[$i]['resolution'] . "</p>
-                    <p><span class='bold'>Taille</span> : " . $fetched[$i]['taille'] . "\"</p>
+                    <p><span class='bold'>Modèle</span> : " . $row['modele'] . "</p>
+                    <p><span class='bold'>Marque</span> : " . $row['marque'] . "</p>
+                    <p><span class='bold'>Type écran</span> : " . $row['type_ecran'] . "</p>
+                    <p><span class='bold'>Résolution</span> : " . $row['resolution'] . "</p>
+                    <p><span class='bold'>Taille</span> : " . $row['taille'] . "\"</p>
                   </article>";
-            echo "<p>Prix : " . $fetched[$i]['prix'] . "$</p></div>";
+            echo "<p>Prix : " . $row['prix'] . "$</p></div>";
             echo "</div>"; } ?>
     </div>
 <?php include_once 'inc/footer.php';?>

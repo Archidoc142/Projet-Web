@@ -15,6 +15,10 @@
                                     JOIN type_ecran e ON e.id = t.id_type_ecran
                                     JOIN os ON os.id = t.id_os
                                     WHERE t.modele = :modele";
+        
+        CONST SELECT_TELEVISEUR_OBJECT_BY_MODELE = "SELECT * FROM televiseur WHERE modele = :modele";
+
+        const SELECT_TELEVISEURS_BY_PORT = "SELECT televiseur.* FROM televiseur INNER JOIN televiseur_port ON televiseur.modele = televiseur_port.modele_televiseur WHERE televiseur_port.id_port = :idPort";
 
         const SELECT_MARQUES = "SELECT nom FROM marque";
 
@@ -119,5 +123,39 @@
             return $televiseurs;
         }
     
+        public function getTeleviseurByModele(string $modele) 
+        {
+          $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_OBJECT_BY_MODELE);
+      
+          $query->execute(array(':modele' => $modele));
+      
+          $bddResult = $query->fetch();
+      
+          if ($bddResult) 
+          {
+            return new Televiseur($bddResult, 0);
+          }
+          else 
+          {
+            return null;
+          }
+        }
+
+        public function getTeleviseursByPort(int $idPort) 
+        {
+          $televiseursArray = array();
+
+          $query = $this->_bdd->prepare(self::SELECT_TELEVISEURS_BY_PORT);
+      
+          $query->execute(array(':idPort' => $idPort));
+      
+          $bddResult = $query->fetchAll();
+      
+          foreach ($bddResult as $row) {
+            array_push($televiseursArray, new Televiseur($row, 0));
+          }
+      
+          return $televiseursArray;
+        }
     }
 ?>
