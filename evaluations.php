@@ -52,7 +52,7 @@
         }
       }
       else if (isset($_REQUEST['modele'])) {
-        $televiseurObj = $televiseurManager->getTeleviseurByModele($_REQUEST['modele']);
+        $televiseurObj = $televiseurManager->getTeleviseurObjectByModele($_REQUEST['modele']);
       
         if (isset($televiseurObj)) {
           ?>
