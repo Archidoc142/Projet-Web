@@ -512,3 +512,28 @@ main#profile .button
     font-size: 1.5em;
     padding: 64px 0;
 }
+
+#marques
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 480px;
+    margin: auto;
+}
+
+.marque
+{
+    display: block;
+    width: 480px;
+    height: 240px;
+    object-fit: cover;
+    margin-bottom: 24px;
+}
+
+.marque img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
