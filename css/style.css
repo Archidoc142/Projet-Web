@@ -192,6 +192,50 @@ footer {
 .error{
     color:#FE0A0A;
 }
+
+body
+{
+    background-color: rgb(36, 36, 36);
+    color: white;
+}
+
+.none { display: none; }
+
+.center { text-align: center; }
+
+.flex { display: flex; }
+
+.titleIndex { margin: 14% 0 5%; }
+
+#nav-fav-btn{ margin-right: 0.5rem; }
+
+.bold { font-weight: 700; }
+
+.mob-hidden { display: none; }
+
+.part2-Index {
+    margin-top: 22%;
+    padding: 2%;
+    background-color: rgb(89, 87, 87);
+    border-radius: 10px;
+}
+
+.part2-Index h2 { margin: 3%; }
+
+.part2-Index img{
+    max-width: 60%;
+    border-radius: 2%;
+    margin-bottom: 2%;
+}
+
+.part2-Index > div {
+    margin: 3% 0;
+    padding: 6%;
+    background-color: rgba(48, 44, 44, 0.845);
+    border-radius: 15px;
+}
+
+/*Début du bloc de Joel*/
 #register{
     width: 70%;
     margin: auto;
@@ -286,6 +330,27 @@ footer {
     height: 40px;
 }
 
+
+main .search{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main .search button{
+    text-align: center;
+    background-color: #e86100;
+    padding: 10px;
+    color: #fff;
+    border: none;
+}
+
+main .recherche{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
 body
 {
     background-color: rgb(36, 36, 36);
@@ -293,29 +358,47 @@ body
     position: relative;
 }
 
-.none { display: none; }
+main .search{
+    font-style: italic;
+    padding: 10px;
+} 
 
-.center { text-align: center; }
-
-.flex { display: flex; }
-
-.titleIndex { margin: 14% 0 5%; }
-
-#nav-fav-btn{ margin-right: 0.5rem; }
-
-.bold { font-weight: 700; }
-
-.mob-hidden { display: none; }
-
-.part2-Index {
-    margin-top: 22%;
-    padding: 2%;
-    background-color: rgb(89, 87, 87);
-    border-radius: 10px;
+main .search input{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
 }
 
-.part2-Index h2 { margin: 3%; }
 
+
+main .container-television .accordion .accordion-item aside h2{
+    font-size: 20px;
+}
+
+main .container-television{
+    width: 100%;
+}
+
+main .container-television aside{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+main .container .container-television aside a{
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+main .marque{
+    overflow: hidden;
+    text-align: center;
+
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+}
 .part2-Index a { width: 40%; }
 
 .part2-Index img{
@@ -325,12 +408,96 @@ body
     cursor: pointer;
 }
 
-.part2-Index > div {
-    margin: 3% 0;
-    padding: 6%;
-    background-color: rgba(48, 44, 44, 0.845);
-    border-radius: 15px;
+main .marque a{
+   text-decoration: none;
+   width: 50%;
+   color: #fff;
 }
+
+main .accordion .accordion-header button{
+    background-color: #000000;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+main .accordion .accordion-header button:active{
+    border: 1px solid #000;
+}
+
+main .accordion .accordion-item{
+    /*background-color: rgb(36, 36, 36);*/
+    background-color: #000000;
+    border: 1px solid #000;
+    color: #fff;
+}
+
+
+main .accordion .accordion-item a{
+    color: #fff;
+
+}
+
+main section{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    margin-bottom : 20px;
+    padding-bottom: 20px;
+}
+
+main section img{
+    width: 100%;
+}
+
+main .container-television section img{
+    width: 100%;
+    height: 100%;
+}
+
+main .container-television section{
+    width: 100%;
+    padding: 10px;
+}
+
+main .container-television section p{
+    width: 100%;
+}
+
+main .container-television a{
+    display: block;
+    width: 100%;
+    height: 50px;
+    background-color: #e86100;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom : 20px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.voirplus{
+    width: 100%;
+    height: 100%;
+    background-color: #e86100;
+    text-decoration: none;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.voirplus a{
+    text-decoration: #fff;
+    color: #fff;
+}
+
+main .container-television .desktop{
+    display:none;
+}
+
+/*Fin du bloc joel*/
 
 .titleArticle { margin: 4% 0 3% }
 
@@ -344,6 +511,198 @@ body
     gap: 1rem;
 }
 
+    /* Index */
+    .titleIndex{ font-size: 48px; }
+    .ssIndex{ font-size: 26px; }
+    .part2-Index > div {
+        display: flex;
+        padding: 2%;
+        font-size: 125%;
+        align-items: center;
+    }
+    .part2-Index > div div {
+        text-align: left;
+        line-height: 2;
+        margin-left: 2%;
+    }
+    .part2-Index h2 {
+        margin: 0;
+        font-size: 250%;
+    }
+    .part2-Index img {
+        width: 40%;
+        margin: 0;
+    }
+
+    /* Section Joel*/
+
+    #register{
+        width: 40%;
+        margin: auto;
+        color: #fff;
+        margin-bottom : 20px;
+        margin-top: 20px;
+    }
+
+    #login{
+        width: 40%;
+        margin: auto;
+        color: #fff;
+        margin-bottom : 20px;
+        margin-top: 20px;
+    }
+
+        
+    main .search{
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        font-style: italic;
+
+    }
+
+    main .search div{
+        margin: 10px;
+    }
+
+    main .search input{
+        width: 400px;
+    }
+
+    main .recherche{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: auto;
+    }
+
+
+    main header, footer{
+        text-align: center;
+    }
+
+
+    .container-television{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        width: 100%;
+        padding: 10px;
+    }
+
+    main .container-television aside{
+        width: 20%;
+    }
+
+    main .accordion .accordion-header button{
+        background-color: rgb(36, 36, 36);
+        color: #fff;
+        border: 1px solid #000;
+    }
+    
+    main .accordion .accordion-header button:active{
+        border: 1px solid #000;
+    }
+    
+    main .accordion .accordion-item{
+        background-color: rgb(36, 36, 36);
+        border: 1px solid #000;
+        color: #fff;
+        border: 1px solid #000;
+    }
+    
+    main .accordion-body a{
+        color: #fff;
+        background-color:rgb(36, 36, 36);
+        width: 100%;
+        text-align: center;
+    }
+
+    main .container-television aside a{
+        text-decoration: none;
+        width: 50%;
+        color: #000;
+        margin-bottom: 20px;
+    }
+
+    main .container-television section{
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        width: 80%;
+        padding: 10px;
+    }
+
+    main .container-television section div{
+        width: 100%;
+        padding: 10px;
+    }
+
+    main .container-television section img{
+        width: 300px;
+        height: 180px;
+    }
+
+    main aside{
+        display:none;
+    }
+
+    main .container-television section div a{
+        width: 100%;
+        text-align: center;
+    }
+
+    .voirplus{
+        float: right;
+        width: 20%;
+    }
+
+    main .accordion{
+        display: none;
+    }
+
+    main .container-television .desktop{
+        display:inline;
+        width: 20%;
+        border-right: 1px solid #fff;
+        text-align: center;
+    }
+
+    main .container-television .desktop h6{
+        text-decoration:underline;
+    }
+
+    main .container-television .desktop ul li{
+        background-color: none;
+        list-style: none;
+
+    }
+
+    main .container-television .desktop a{
+        text-decoration: none;
+        padding: 10px;
+        text-align:right;
+        background-color:rgb(36, 36, 36);
+        display:inline-block;
+     }
+
+    
+    /*Fin section Joel*/
+}
+
+/* Big Screen */
+@media only screen and (min-width: 1600px) {
+    /* General */
+    
+    /* Index */
+    .part2-Index > div div { line-height: 3; }
+
+    
 .containerArticle h2 { font-size: 200%; }
 
 .containerArticle img { 
