@@ -175,9 +175,6 @@ footer {
     color:#FE0A0A;
 }
 
-
-
-
 body
 {
     background-color: rgb(36, 36, 36);
@@ -315,29 +312,61 @@ body
     height: 40px;
 }
 
+
 main .search{
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
 }
 
+main .search button{
+    text-align: center;
+    background-color: #e86100;
+    padding: 10px;
+    color: #fff;
+    border: none;
+}
+
+main .recherche{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+body
+{
+    background-color: rgb(36, 36, 36);
+    color: white;
+    position: relative;
+}
+
+main .search{
+    font-style: italic;
+    padding: 10px;
+} 
 
 main .search input{
-    width: 80%;
+    width: 100%;
     height: 40px;
     margin-bottom: 20px;
 }
 
-main .search h3{
-    padding: 20px;
+
+
+main .container-television .accordion .accordion-item aside h2{
+    font-size: 20px;
 }
 
-main .container aside{
+main .container-television{
+    width: 100%;
+}
+
+main .container-television aside{
     width: 100%;
     margin-bottom: 20px;
 }
 
-main .container aside a{
+main .container .container-television aside a{
     width: 100%;
     display: inline-block;
     text-decoration: none;
@@ -378,19 +407,68 @@ main .accordion .accordion-item{
 
 main .accordion .accordion-item a{
     color: #fff;
+
 }
 
 main section{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    margin-bottom : 20px;
+    padding-bottom: 20px;
 }
 
 main section img{
     width: 100%;
 }
 
+main .container-television section img{
+    width: 100%;
+    height: 100%;
+}
 
+main .container-television section{
+    width: 100%;
+    padding: 10px;
+}
+
+main .container-television section p{
+    width: 100%;
+}
+
+main .container-television a{
+    display: block;
+    width: 100%;
+    height: 50px;
+    background-color: #e86100;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom : 20px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.voirplus{
+    width: 100%;
+    height: 100%;
+    background-color: #e86100;
+    text-decoration: none;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.voirplus a{
+    text-decoration: #fff;
+    color: #fff;
+}
+
+main .container-television .desktop{
+    display:none;
+}
 
 /*Fin du bloc joel*/
 
@@ -422,6 +500,9 @@ main section img{
         width: 40%;
         margin: 0;
     }
+
+    /* Section Joel*/
+
     #register{
         width: 40%;
         margin: auto;
@@ -437,6 +518,148 @@ main section img{
         margin-bottom : 20px;
         margin-top: 20px;
     }
+
+        
+    main .search{
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        font-style: italic;
+
+    }
+
+    main .search div{
+        margin: 10px;
+    }
+
+    main .search input{
+        width: 400px;
+    }
+
+    main .recherche{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: auto;
+    }
+
+
+    main header, footer{
+        text-align: center;
+    }
+
+
+    .container-television{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        width: 100%;
+        padding: 10px;
+    }
+
+    main .container-television aside{
+        width: 20%;
+    }
+
+    main .accordion .accordion-header button{
+        background-color: rgb(36, 36, 36);
+        color: #fff;
+        border: 1px solid #000;
+    }
+    
+    main .accordion .accordion-header button:active{
+        border: 1px solid #000;
+    }
+    
+    main .accordion .accordion-item{
+        background-color: rgb(36, 36, 36);
+        border: 1px solid #000;
+        color: #fff;
+        border: 1px solid #000;
+    }
+    
+    main .accordion-body a{
+        color: #fff;
+        background-color:rgb(36, 36, 36);
+        width: 100%;
+        text-align: center;
+    }
+
+    main .container-television aside a{
+        text-decoration: none;
+        width: 50%;
+        color: #000;
+        margin-bottom: 20px;
+    }
+
+    main .container-television section{
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        width: 80%;
+        padding: 10px;
+    }
+
+    main .container-television section div{
+        width: 100%;
+        padding: 10px;
+    }
+
+    main .container-television section img{
+        width: 300px;
+        height: 180px;
+    }
+
+    main aside{
+        display:none;
+    }
+
+    main .container-television section div a{
+        width: 100%;
+        text-align: center;
+    }
+
+    .voirplus{
+        float: right;
+        width: 20%;
+    }
+
+    main .accordion{
+        display: none;
+    }
+
+    main .container-television .desktop{
+        display:inline;
+        width: 20%;
+        border-right: 1px solid #fff;
+        text-align: center;
+    }
+
+    main .container-television .desktop h6{
+        text-decoration:underline;
+    }
+
+    main .container-television .desktop ul li{
+        background-color: none;
+        list-style: none;
+
+    }
+
+    main .container-television .desktop a{
+        text-decoration: none;
+        padding: 10px;
+        text-align:right;
+        background-color:rgb(36, 36, 36);
+        display:inline-block;
+     }
+
+    
+    /*Fin section Joel*/
 }
 
 /* Big Screen */
@@ -445,6 +668,8 @@ main section img{
     
     /* Index */
     .part2-Index > div div { line-height: 3; }
+
+    
 }
 
 .grid 
@@ -507,3 +732,79 @@ main#profile .button
 {
   display: none !important;
 }
+
+.part2-Index {
+    margin-top: 22%;
+    padding: 2%;
+    background-color: rgb(89, 87, 87);
+    border-radius: 10px;
+}
+
+.part2-Index h2 { margin: 3%; }
+
+.part2-Index img{
+    max-width: 60%;
+    border-radius: 2%;
+    margin-bottom: 2%;
+}
+
+.favori img
+{
+    width: 120px;
+    border-radius: 8px;
+}
+
+.favori-row
+{
+    display: flex;
+}
+
+.favori-buttons
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 8px;
+}
+
+.favori-buttons a
+{
+    width: 50%;
+    display: block;
+    text-decoration: none;
+    padding: 8px 40px;
+    color: white;
+    text-align: center;
+}
+
+.favori-buttons a:first-of-type
+{
+    background-color: rgb(28, 106, 189);
+}
+
+.favori-buttons a:last-of-type
+{
+    margin-left: 16px;
+    background-color: rgb(184, 48, 48);
+}
+
+.favori-details
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 16px;
+}
+
+.favori
+{
+    background-color: white;
+    margin: 48px auto;
+    max-width: 600px;
+    padding: 16px;
+    border-radius: 8px;
+    color: black;
+}
+

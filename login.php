@@ -12,23 +12,22 @@ $um = new UserManager($bdd);
     <?php 
     $_SESSION['error']="";
 
-    if(isset($_REQUEST['action'])&& $_REQUEST['action']=="connexion"){
-        
-        $courriel = $_POST['courriel'];
-        $mdp = $_POST['mdp'];
-        $user = $um->userExists($courriel, $mdp);
- 
-        if($user){
-        $_SESSION['error'] ="Succes";
-        $_SESSION['idUser'] = $user['id'];
+    
+if (isset($_POST['action']) && $_POST['action'] == "connexion") {
+    $courriel = $_POST['courriel'];
+    $mdp = $_POST['mdp'];
+    $user = $um->userExists($courriel, $mdp);
 
+    if ($user) {
+        $_SESSION['error'] = "Succes";
+        $_SESSION['idUser'] = $user['id'];
         ?><h2>Bienvenue <?php echo $_SESSION['pseudo']; ?></h2><?php
-        }
-        else{
-            $_SESSION['error'] = "Les informations d'authentification sont incorrectes.";
-            header("Location: login.php");
-            exit();
-        }
+    } else {
+        $_SESSION['error'] = "Les informations d'authentification sont incorrectes.";
+        header("Location: login.php");
+        exit();
+    }
+
     
     ?>
     </div>
@@ -48,6 +47,7 @@ $um = new UserManager($bdd);
             <input type="text" name="mdp" class="login-input">
 
             <input type="hidden" name="action" value="connexion"> 
+            
             <button>Connexion</button>
         </form>
         
