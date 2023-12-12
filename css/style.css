@@ -30,7 +30,7 @@ main#profile .grid img {
 main#profile .grid {
   padding: 10px;
   width: 100%;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
 }
 
 @font-face
@@ -55,11 +55,19 @@ main#profile .grid {
 
 h1, h2, h3 {
     font-family: 'Whitney';
+  margin-bottom: 10px;
 }
 
 a 
 {
+  color: white;
+  text-decoration: underline;
   cursor: pointer;
+}
+
+a:hover
+{
+  text-shadow: 0px 0px 15px var(--orange), 0px 0px 10px var(--orange);
 }
 
 .nav-header
@@ -84,7 +92,9 @@ footer
 
 nav
 {
-    position: relative;
+    position: fixed;
+    width: 100%;
+    top: 0;
     z-index: 10;
 }
 
@@ -95,15 +105,23 @@ nav button
     cursor: pointer;
 }
 
-#nav-menu-img, 
-#nav-fav-img
+#nav-menu-img, #nav-fav-img { fill: white; }
+
+.nav-user-img 
 {
-    fill: white;
+  border-radius: 50%;
+  border: 1px solid white;
 }
 
-.nav-user-img
+.nav-user-img.noirBlanc
 {
     filter: invert(98%) sepia(100%) saturate(20%) hue-rotate(208deg) brightness(104%) contrast(100%);
+}
+
+.nav-header-right 
+{
+  display: grid;
+  column-gap: 10px;
 }
 
 .nav-header a, .nav-header-left, .nav-header-right, #nav-menu-btn
@@ -381,6 +399,14 @@ main .marque{
     padding: 10px;
     display: flex;
 }
+.part2-Index a { width: 40%; }
+
+.part2-Index img{
+    width: 100%;
+    border-radius: 2%;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
 
 main .marque a{
    text-decoration: none;
@@ -404,6 +430,7 @@ main .accordion .accordion-item{
     border: 1px solid #000;
     color: #fff;
 }
+
 
 main .accordion .accordion-item a{
     color: #fff;
@@ -472,11 +499,17 @@ main .container-television .desktop{
 
 /*Fin du bloc joel*/
 
+.titleArticle { margin: 4% 0 3% }
 
-@media only screen and (min-width: 968px) {
-    /* General */
-    main { padding: 0; }
-    .mob-hidden { display: block; }
+.containerArticle{
+    display: block;
+    text-align: center;
+    margin: 2%;
+    padding: 6% 2% 5% 2%;
+    border-radius: 20px;
+    background-color: rgb(89, 87, 87);
+    gap: 1rem;
+}
 
     /* Index */
     .titleIndex{ font-size: 48px; }
@@ -670,6 +703,27 @@ main .container-television .desktop{
     .part2-Index > div div { line-height: 3; }
 
     
+.containerArticle h2 { font-size: 200%; }
+
+.containerArticle img { 
+    width: 80%; 
+    margin-bottom: 4%;
+}
+
+.grid3C { 
+    display: block; 
+    line-height: 2.5;
+    margin-top: 6%;
+}
+
+.grid3C p{
+    font-size: 18px;
+}
+
+p.message 
+{
+  text-align: center;
+  margin: 10px 0px;
 }
 
 .grid 
@@ -682,50 +736,112 @@ main#profile
     padding: 15px;
 }
 
-main#profile, main#profile form 
+main#profile
 {
-    width: 100%;
+  width: 100%;
+}
+
+main#profile form 
+{
+  width: 80%;
+  margin: auto;
 }
 
 main#profile .grid img 
 {
-  grid-row-start: 1;
-  grid-row-end: 9;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 300px;
+  margin: auto;
 }
 
-main#profile .grid 
+main#profile .grid
 {
-  padding: 10px;
-  width: 100%;
-  grid-template-columns: 50% 50%;
-  column-gap: 10px;
   row-gap: 10px;
+}
+
+main#profile form .grid 
+{
+  grid-template-columns: 1fr;
+  padding: 10px;
+}
+
+main#profile #changeMdpBox, #portModelesPopup
+{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+main#profile #changeMdpBox > div, #portModelesPopup > #listeModeleDiv
+{
+  background-color: black;
+  border-radius: 20px;
+  padding: 30px;
+
+  box-shadow: 0 0 25px 0 var(--orange),
+              0 0 80px gray inset;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: auto;
 }
 
 main#profile .button 
 {
-  margin-top: 30px;
-  display: block;
   width: 70%;
-  margin: 15px auto;
 }
 
 .button
 {
+  cursor: pointer;
   border: 1px solid white;
   background-color: #000000;
   padding: 10px 0px;
   border-radius: 15px;
   text-align: center;
   color: white;
+  margin-top: 30px;
+  display: block;
+  width: 50%;
+  margin: 15px auto;
+}
+
+main#evaluations h1
+{
+  text-align: center;
+}
+
+main#evaluations > div
+{
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.evaluation 
+{
+  border: 1px dotted white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 10px 0px;
+}
+
+.evaluation h3 
+{
+  color: var(--orange);
 }
 
 .button:hover 
 {
   color: var(--orange);
-  background: linear-gradient(#000000, #3f3f3f) !important;
+  background: linear-gradient(#000000, #3f3f3f);
 }
 
 .hidden
@@ -733,30 +849,182 @@ main#profile .button
   display: none !important;
 }
 
-.part2-Index {
-    margin-top: 22%;
-    padding: 2%;
-    background-color: rgb(89, 87, 87);
-    border-radius: 10px;
+main#port
+{
+  padding: 20px;
+  width: 100%;
 }
 
-.part2-Index h2 { margin: 3%; }
-
-.part2-Index img{
-    max-width: 60%;
-    border-radius: 2%;
-    margin-bottom: 2%;
+main#port .grid 
+{
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 30px;
+  column-gap: 30px;
 }
+
+div.portDiv 
+{
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  transition: all .5s;
+}
+  
+div.portDiv:hover
+{
+  transform: scale(1.2);
+  border: 1px solid var(--orange);
+  box-shadow: 5px 5px 10px turquoise;
+}
+
+#portModelesPopup ul
+{
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+@media only screen and (min-width: 968px) {
+  /* General */
+  main { padding: 0; }
+  .mob-hidden { display: block; }
+
+  /* Index */
+  .titleIndex { font-size: 48px; }
+  .ssIndex{ font-size: 26px; }
+  .part2-Index > div {
+      display: flex;
+      padding: 2%;
+      font-size: 125%;
+      align-items: center;
+  }
+  .part2-Index > div div {
+      text-align: left;
+      line-height: 2;
+      margin-left: 2%;
+  }
+  .part2-Index h2 {
+      margin: 0;
+      font-size: 250%;
+  }
+  .part2-Index img { margin: 0; }
+
+  /* Article */
+  .titleArticle { font-size: 36px; }
+  .containerArticle {
+      display: flex; 
+      padding: 2%;
+      
+  }
+  .containerArticle img { 
+      width: 50%;
+      margin-bottom: 0;
+      object-fit: contain;
+  }
+
+  .containerArticle h2 {
+      background-color: #403e44;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 1%;
+  }
+
+  .containerArticle > div { width: 50%; }
+  
+  .grid3C {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-top: 2%;
+      line-height: 3;
+  }
+
+  .grid3C p { font-size: 120%; }
+
+  /* Seriously??????? */
+  #register{
+      width: 40%;
+      margin: auto;
+      color: #fff;
+      margin-bottom : 20px;
+      margin-top: 20px;
+  }
+
+  #login{
+      width: 40%;
+      margin: auto;
+      color: #fff;
+      margin-bottom : 20px;
+      margin-top: 20px;
+  }
+
+  main#profile form .grid img {
+    grid-row-start: 1;
+    grid-row-end: 5;
+  }
+
+  main#profile .myProfile .grid img {
+    grid-row-end: 6;
+  }
+
+  main#profile .myProfile.modifying .grid img {
+    grid-row-end: 7;
+  }
+
+  main#profile form:first-of-type .grid {
+    grid-template-columns: 25% 37.5% 37.5%;
+    column-gap: 15px;
+  }
+
+  main#profile #changeMdpBox .grid input, main#profile #changeMdpBox .grid label {
+    grid-template-columns: 1fr 1fr;
+    grid-column: span 1;
+  }
+
+  main#profile form:first-of-type .button {
+    width: 500px;
+  }
+
+  main#evaluations .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  main#evaluations .grid h1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  main#port .grid 
+  {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* Big Screen */
+@media only screen and (min-width: 1600px) {
+    /* General */
+    
+    /* Index */
+    .part2-Index > div div { line-height: 3; }
+
+    /* Article */
+    .grid3C { line-height: 6.5; }
+}
+
 
 .favori img
 {
-    width: 120px;
-    border-radius: 8px;
+    width: 280px;
+    margin: 16px auto;
+    object-fit: cover;
 }
 
 .favori-row
 {
     display: flex;
+    flex-direction: column;
 }
 
 .favori-buttons
@@ -765,8 +1033,7 @@ main#profile .button
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 16px;
-    padding-bottom: 8px;
+    padding: 16px;
 }
 
 .favori-buttons a
@@ -774,7 +1041,7 @@ main#profile .button
     width: 50%;
     display: block;
     text-decoration: none;
-    padding: 8px 40px;
+    padding: 12px 40px;
     color: white;
     text-align: center;
 }
@@ -801,10 +1068,46 @@ main#profile .button
 .favori
 {
     background-color: white;
-    margin: 48px auto;
-    max-width: 600px;
+    margin: 0 auto 48px auto;
+    max-width: 550px;
     padding: 16px;
     border-radius: 8px;
     color: black;
 }
 
+.modele
+{
+    margin-bottom: 16px;
+}
+
+.page-title
+{
+    text-align: center;
+    font-size: 1.5em;
+    padding: 64px 0;
+}
+
+#marques
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 480px;
+    margin: auto;
+}
+
+.marque
+{
+    display: block;
+    width: 480px;
+    height: 240px;
+    object-fit: cover;
+    margin-bottom: 24px;
+}
+
+.marque img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
