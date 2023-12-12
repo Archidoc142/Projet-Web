@@ -1,8 +1,4 @@
-<?php 
-    require_once("pretraitement.php"); 
-    require_once 'class/PDOFactory.php';
-    $bdd = PDOFactory::getMySQLConnection();
-?>
+<?php require_once("pretraitement.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,8 +26,6 @@
             <div class="nav-header-right">
                 <?php 
                   if (isset($_SESSION['idUser'])) {
-                    $photoUser = $userManager->getUserPhoto($_SESSION['idUser']);
-                    $photoValide = (isset($photoUser) && !empty($photoUser));
                 ?>
                     <button id="nav-fav-btn">
                         <a href="favoris?idUser=<?= $_SESSION['idUser']; ?>">
@@ -40,26 +34,20 @@
                     </button>
                     <button id="nav-profile-btn">
                     <a href="profile?idUser=<?= $_SESSION['idUser']; ?>">
-                        <img class="nav-user-img <?= !$photoValide ? 'noirBlanc' : '' ; ?>" src="<?= $photoValide ? $photoUser : 'img/icon/user-170.svg' ;?>" alt="User" width="32" height="32">
+                        <img class="nav-user-img" src="user-170.svg" alt="User" width="32" height="32">
                     </a>
                     </button>
                     <?php 
-                  }
-                  else {
-                    ?>
-                    <a href="register">S'inscrire</a>
-                    <a href="login">Se connecter</a>
-                    <?php
                   }
                   ?>
             </div>
         </div>
         <div class="nav-buttons none">
             <ul>
-                <li><a href="index">Accueil</a></li>
-                <li><a href="marque">Marques</a></li>
-                <li><a href="television">Téléviseurs</a></li>
-                <li><a href="port">Ports</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="marque.php">Marques</a></li>
+                <li><a href="television.php">Téléviseurs</a></li>
+                <li><a href="port.php">Ports</a></li>
             </ul>
         </div>
     </nav>
