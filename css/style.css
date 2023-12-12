@@ -527,6 +527,261 @@ div.portDiv:hover
   margin: auto;
 }
 
+/*Début du bloc de Joel*/
+#register{
+  width: 70%;
+  margin: auto;
+  color: #fff;
+}
+
+#register p{
+  font-style: italic;
+  text-align: center;
+}
+
+#register .message-register h3{
+  text-align: center;
+  font-size: 30px;
+}
+
+#register .message-register p{
+  text-align: center;
+  font-size: 15px;
+}
+
+#register h3{
+  text-align: center;
+  color: #fff;
+  font-size:40px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+#register label{
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+}
+
+#register button{
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  background-color: #e86100;
+  color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  border: none;
+}
+
+#register .register-input{
+  width: 100%;
+  height: 40px;
+}
+
+#login{
+  width: 70%;
+  margin: auto;
+  color: #fff;
+}
+
+#login h3{
+  text-align: center;
+  color: #fff;
+  font-size:40px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+#login p{
+  text-align: center;
+  font-style: italic;
+}
+
+#login label{
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+}
+
+#login button{
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  background-color: #e86100;
+  color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  border: none;
+}
+
+#login .login-input{
+  width: 100%;
+  height: 40px;
+}
+
+
+main .search{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+main .search button{
+  text-align: center;
+  background-color: #e86100;
+  padding: 10px;
+  color: #fff;
+  border: none;
+}
+
+main .recherche{
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+body
+{
+  background-color: rgb(36, 36, 36);
+  color: white;
+  position: relative;
+}
+
+main .search{
+  font-style: italic;
+  padding: 10px;
+} 
+
+main .search input{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+
+
+main .container-television .accordion .accordion-item aside h2{
+  font-size: 20px;
+}
+
+main .container-television{
+  width: 100%;
+}
+
+main .container-television aside{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+main .container .container-television aside a{
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+main .marque{
+  overflow: hidden;
+  text-align: center;
+
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+}
+
+main .marque a{
+ text-decoration: none;
+ width: 50%;
+ color: #fff;
+}
+
+main .accordion .accordion-header button{
+  background-color: #000000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+main .accordion .accordion-header button:active{
+  border: 1px solid #000;
+}
+
+main .accordion .accordion-item{
+  /*background-color: rgb(36, 36, 36);*/
+  background-color: #000000;
+  border: 1px solid #000;
+  color: #fff;
+}
+
+main .accordion .accordion-item a{
+  color: #fff;
+
+}
+
+main section{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  margin-bottom : 20px;
+  padding-bottom: 20px;
+}
+
+main section img{
+  width: 100%;
+}
+
+main .container-television section img{
+  width: 100%;
+  height: 100%;
+}
+
+main .container-television section{
+  width: 100%;
+  padding: 10px;
+}
+
+main .container-television section p{
+  width: 100%;
+}
+
+main .container-television a{
+  display: block;
+  width: 100%;
+  height: 50px;
+  background-color: #e86100;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom : 20px;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.voirplus{
+  width: 100%;
+  height: 100%;
+  background-color: #e86100;
+  text-decoration: none;
+  color:#fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.voirplus a{
+  text-decoration: #fff;
+  color: #fff;
+}
+
+main .container-television .desktop{
+  display:none;
+}
+
+/*Fin du bloc joel*/
+
 @media only screen and (min-width: 968px) {
   /* General */
   main { padding: 0; }
@@ -641,6 +896,166 @@ div.portDiv:hover
   {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
+
+      /* Section Joel*/
+
+      #register{
+        width: 40%;
+        margin: auto;
+        color: #fff;
+        margin-bottom : 20px;
+        margin-top: 20px;
+    }
+
+    #login{
+        width: 40%;
+        margin: auto;
+        color: #fff;
+        margin-bottom : 20px;
+        margin-top: 20px;
+    }
+
+        
+    main .search{
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        font-style: italic;
+
+    }
+
+    main .search div{
+        margin: 10px;
+    }
+
+    main .search input{
+        width: 400px;
+    }
+
+    main .recherche{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: auto;
+    }
+
+
+    main header, footer{
+        text-align: center;
+    }
+
+
+    .container-television{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        width: 100%;
+        padding: 10px;
+    }
+
+    main .container-television aside{
+        width: 20%;
+    }
+
+    main .accordion .accordion-header button{
+        background-color: rgb(36, 36, 36);
+        color: #fff;
+        border: 1px solid #000;
+    }
+    
+    main .accordion .accordion-header button:active{
+        border: 1px solid #000;
+    }
+    
+    main .accordion .accordion-item{
+        background-color: rgb(36, 36, 36);
+        border: 1px solid #000;
+        color: #fff;
+        border: 1px solid #000;
+    }
+    
+    main .accordion-body a{
+        color: #fff;
+        background-color:rgb(36, 36, 36);
+        width: 100%;
+        text-align: center;
+    }
+
+    main .container-television aside a{
+        text-decoration: none;
+        width: 50%;
+        color: #000;
+        margin-bottom: 20px;
+    }
+
+    main .container-television section{
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        width: 80%;
+        padding: 10px;
+    }
+
+    main .container-television section div{
+        width: 100%;
+        padding: 10px;
+    }
+
+    main .container-television section img{
+        width: 300px;
+        height: 180px;
+    }
+
+    main aside{
+        display:none;
+    }
+
+    main .container-television section div a{
+        width: 100%;
+        text-align: center;
+    }
+
+    .voirplus{
+        float: right;
+        width: 20%;
+    }
+
+    main .accordion{
+        display: none;
+    }
+
+    main .container-television .desktop{
+        display:inline;
+        width: 20%;
+        border-right: 1px solid #fff;
+        text-align: center;
+    }
+
+    main .container-television .desktop h6{
+        text-decoration:underline;
+    }
+
+    main .container-television .desktop ul li{
+        background-color: none;
+        list-style: none;
+
+    }
+
+    main .container-television .desktop a{
+        text-decoration: none;
+        padding: 10px;
+        text-align:right;
+        background-color:rgb(36, 36, 36);
+        display:inline-block;
+     }
+
+    
+    /*Fin section Joel*/
 }
 
 /* Big Screen */
