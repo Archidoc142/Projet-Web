@@ -36,6 +36,10 @@ public function addUser(User $user)
                         ':id_langue'=>$user->get_id_langue());
   
         $result = $query->execute($params);
+
+        if ($result) {
+          $_SESSION['idUser'] = $this->_bdd->lastInsertId();
+        }
         
         return $result;
 }
