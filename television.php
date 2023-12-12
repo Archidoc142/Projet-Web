@@ -119,7 +119,7 @@ $tm = new TeleviseurManager($bdd);
                         <h3><?= $categorie['nom'];?></h3>
                         <p>Modèle  : <?=$categorie['modele'];?></p>
                         <p>Prix    : <?=$categorie['prix'];?> $</p>
-                        <a href="television?filter=<?=$_GET['cat']; ?>&value= <?= urlencode($categorie['nom']);?>">+ de détails</a>
+                        <a href="article?modele=<?=$categorie['modele']; ?>">+ de détails</a>
                     </div>
                 </div>
 
@@ -135,7 +135,7 @@ $tm = new TeleviseurManager($bdd);
                      <h3><?= $categorie['nom'];?></h3>
                     <p>Modèle  : <?=$categorie['modele'];?></p>
                     <p>Prix    : <?=$categorie['prix'];?> $</p>
-                    <a href="television?modele=<?=$categorie['modele']; ?>">+ de détails</a>
+                    <a href="article?modele=<?=$categorie['modele']; ?>">+ de détails</a>
             <?php }
 
             }
