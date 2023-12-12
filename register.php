@@ -53,7 +53,7 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
             <input type="text" name="pseudonyme" class="register-input">
 
             <label for="usernam">Email</label>
-            <input type="email" name="courriel" id="email1" class="register-input" required>
+            <input type="email" name="email1" id="email1" class="register-input" required>
 
             <label for="usernam">Repetez Email</label>
             <input type="text" name="email2" id="email2" class="register-input">
