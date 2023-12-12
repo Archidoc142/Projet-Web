@@ -180,7 +180,7 @@ $tm = new TeleviseurManager($bdd);
         </div >
         
         <div class="voirplus">
-            <a href="liste.php">Voir plus</a>
+            <a href="television">Voir plus</a>
         </div>
         
 
