@@ -152,7 +152,7 @@ $tm = new TeleviseurManager($bdd);
 
                 $televiseurs = $tm->getTeleviseur();
                 foreach($televiseurs as $televiseur){?>
-                <div><div>
+                <div><!--div-->
                 <img src="img/tv/<?= $televiseur['modele'];?>.png" alt="<?= $televiseur['nom'];?>">
     
                 <div>
