@@ -34,9 +34,9 @@
         INNER JOIN marque ON televiseur.id_marque = marque.id
         WHERE .$categorie. = :valeur';
 
-const FILTER_TELEVISEUR ='SELECT televiseur.*, marque.nom FROM televiseur 
-INNER JOIN marque ON televiseur.id_marque = marque.id
-WHERE televiseur.nom LIKE :mots OR modele LIKE :mots OR marque.nom LIKE :mots';
+        const FILTER_TELEVISEUR ='SELECT televiseur.*, marque.nom FROM televiseur 
+        INNER JOIN marque ON televiseur.id_marque = marque.id
+        WHERE televiseur.nom LIKE :mots OR modele LIKE :mots OR marque.nom LIKE :mots';
 
         const SELECT_MARQUE='SELECT * FROM marque';
         const SELECT_MARQUES = "SELECT nom FROM marque";
@@ -189,7 +189,7 @@ WHERE televiseur.nom LIKE :mots OR modele LIKE :mots OR marque.nom LIKE :mots';
     
         public function getTeleviseurObjectByModele(string $modele) 
         {
-          $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_OBJECT_BY_MODELE);
+          $query = $this->_bdd->prepare(self::SELECT_TV_BY_MODEL);
       
           $query->execute(array(':modele' => $modele));
       
