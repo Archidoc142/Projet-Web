@@ -33,9 +33,13 @@ public function addUser(User $user)
                         ':mdp'=>$user->get_mdp(),
                         ':courriel'=>$user->get_courriel(), 
                         ':nom'=>$user->get_nom(), ':prenom'=>$user->get_prenom(), 
-                        ':id_langue'=>$user->get_langue());
+                        ':id_langue'=>$user->get_id_langue());
   
         $result = $query->execute($params);
+
+        if ($result) {
+          $_SESSION['idUser'] = $this->_bdd->lastInsertId();
+        }
         
         return $result;
 }

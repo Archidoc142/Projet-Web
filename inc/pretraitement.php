@@ -20,4 +20,23 @@
     else if (isset($_POST['nouveauMdp'])) {
       $messageTraitement = $userManager->updatePassword();
     }
+
+    if (isset($_POST['action'])) {
+      if ($_POST['action'] == "connexion") {
+        $courriel = $_POST['courriel'];
+        $mdp = $_POST['mdp'];
+        $user = $userManager->userExists($courriel, $mdp);
+    
+        if ($user) {
+            $_SESSION['error'] = "Succes";
+            $_SESSION['idUser'] = $user['id'];
+            $_SESSION['pseudo'] = $user['pseudonyme'];
+        } else {
+            $_SESSION['error'] = "Les informations d'authentification sont incorrectes.";
+            header("Location: login.php");
+            exit();
+        }
+    
+      }
+    }
 ?>
