@@ -21,7 +21,7 @@
       $messageTraitement = $userManager->updatePassword();
     }
 
-    if (isset($_POST['action'])) {
+    if (isset($_REQUEST['action'])) {
       if ($_POST['action'] == "connexion") {
         $courriel = $_POST['courriel'];
         $mdp = $_POST['mdp'];
@@ -37,6 +37,10 @@
             exit();
         }
     
+      }
+      else if ($_REQUEST['action'] == 'deconnexion') {
+        session_unset();
+        session_destroy();
       }
     }
 ?>
