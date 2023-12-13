@@ -9,8 +9,8 @@ class UserManager {
 
   const SELECT_LANGUE='SELECT * FROM langue';
   const SELECT_LAST_USER ='SELECT * FROM utilisateur';
-  const SELECT_USER_ID='SELECT * FROM utilisateur WHERE courriel = :courriel';
-  
+  const SELECT_USER_ID='SELECT * FROM utilisateur WHERE courriel = :courriel AND mdp = :mdp';
+
   const SELECT_FAVORIS = TeleviseurManager::SELECT_TVS . " JOIN favoris f ON f.modele_televiseur = t.modele";
 
   private $_bdd;
@@ -24,21 +24,22 @@ class UserManager {
     return $result;
 }
 
-
-
-
 public function addUser(User $user) 
 {
-        $hashedPassword = password_hash($user->get_mdp(), PASSWORD_DEFAULT);
+        
         $sql = 'INSERT INTO utilisateur (pseudonyme, mdp, courriel, nom, prenom, id_langue) VALUES (:pseudonyme, :mdp, :courriel, :nom, :prenom, :id_langue)';
         $query = $this->_bdd->prepare($sql);
         $params = array(':pseudonyme'=>$user->get_pseudonyme(), 
-                        ':mdp'=>$hashedPassword,
+                        ':mdp'=>$user->get_mdp(),
                         ':courriel'=>$user->get_courriel(), 
                         ':nom'=>$user->get_nom(), ':prenom'=>$user->get_prenom(), 
                         ':id_langue'=>$user->get_id_langue());
   
         $result = $query->execute($params);
+
+        if ($result) {
+          $_SESSION['idUser'] = $this->_bdd->lastInsertId();
+        }
         
         return $result;
 }
@@ -47,10 +48,11 @@ public function userExists($courriel, $mdp)
 {
         $query = $this->_bdd->prepare(self::SELECT_USER_ID);
         $query->bindParam(':courriel', $courriel);
+        $query->bindParam(':mdp', $mdp);
         $query->execute();
         $user = $query->fetch();
 
-        if($user && password_verify($mdp, $user['mdp'])){
+        if($user){
             return $user;
         }
         else{

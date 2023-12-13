@@ -6,7 +6,7 @@ include_once 'inc/header.php';
 include_once 'class/UserManager.php';
 $um = new UserManager($bdd);
 ?>
-
+<main>
 <div id="register">
 
     <div class="message-register">
@@ -24,9 +24,6 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
     $langue = $_POST['langue'];*/
 
     $user = new User($_REQUEST);
-
-    
-     print_r($user);
 
 
     if ($um->addUser($user)) {
@@ -71,7 +68,7 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
             <input type="text" name="nom" class="register-input">
 
             <label for="usernam">Langue</label>
-            <select name="langue" id="langue" class="register-input">
+            <select name="id_langue" id="langue" class="register-input">
             <?php
                    $langues = $um->getLangue(); 
                    foreach($langues as $langue){ ?>
@@ -89,7 +86,8 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
 <?php
 }  
 ?>
+</main>
 
 
-</body>
-</html>
+
+<?php include_once('inc/footer.php')?>

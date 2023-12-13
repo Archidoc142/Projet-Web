@@ -5,40 +5,24 @@ $bddResults = $bdd->query("SELECT * FROM televiseur;");
 include_once 'inc/header.php';
 $um = new UserManager($bdd);
 ?>
-
+<main>
     <div id="login">
 
     <div class="message-login">
     <?php 
-    $_SESSION['error']="";
+if (isset($_SESSION['idUser']) && isset($_SESSION['pseudo'])) {
 
-    
-if (isset($_POST['action']) && $_POST['action'] == "connexion") {
-    $courriel = $_POST['courriel'];
-    $mdp = $_POST['mdp'];
-    $user = $um->userExists($courriel, $mdp);
-
-    if ($user) {
-        $_SESSION['error'] = "Succes";
-        $_SESSION['idUser'] = $user['id'];
-        ?><h2>Bienvenue <?php echo $_SESSION['pseudo']; ?></h2><?php
-    } else {
-        $_SESSION['error'] = "Les informations d'authentification sont incorrectes.";
-        header("Location: login.php");
-        exit();
-    }
-
-    
-    ?>
+    ?><h2>Bienvenue <?php echo $_SESSION['pseudo']; ?></h2>
     </div>
 <?php
-    }else
+    }
+    else
     {
-       ;
 ?>
+</div>
         <h3>Connectez-vous</h3>
         <p>Accedez à votre compte à tout moment.</p>
-        <p><?php echo $_SESSION['error']; ?></p>
+        <p><?= isset($_SESSION['error']) ? $_SESSION['error'] : ''; ?></p>
         <form action="login.php" method="post">
             <label for="usernam">Entrer votre courriel</label>
             <input type="email" name="courriel" class="login-input">
@@ -52,8 +36,8 @@ if (isset($_POST['action']) && $_POST['action'] == "connexion") {
         </form>
         
     </div>
+</main>
 <?php
     }
+    include_once 'inc/footer.php';
 ?>
-</body>
-</html>
