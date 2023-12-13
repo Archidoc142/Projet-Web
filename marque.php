@@ -13,8 +13,8 @@
         <h1>Nos marques</h1>
     </div>
     <div id="marques">
-        <?php foreach($marques as $marque) { ?>
-            <a href="" class="marque">
+        <?php foreach($marques as $index=>$marque) { ?>
+            <a href="television.php?cat=<?php echo($index + 1) ?>" class="marque">
                 <img src="img/marque/<?php echo($marque) ?>.png" alt="<?php echo($marque) ?>">
             </a>
                 
