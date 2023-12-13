@@ -39,6 +39,9 @@
                         <img class="nav-user-img <?= !$photoValide ? 'noirBlanc' : '' ; ?>" src="<?= $photoValide ? $photoUser : 'img/icon/user-170.svg' ;?>" alt="User" width="32" height="32">
                     </a>
                     </button>
+                    <button>
+                        <a href="login?action=deconnexion">Se déconnecter</a>
+                    </button>
                     <?php 
                   }
                   else {
