@@ -8,7 +8,7 @@
     
 ?>
 
-<main>
+<main id="main-marques">
     <div class="page-title">
         <h1>Nos marques</h1>
     </div>

@@ -1,9 +1,5 @@
 <?php
     include_once 'inc/header.php';
-    require_once 'class/UserManager.php';
-
-    $userMgr = new UserManager($bdd);
-    $favoris = $userMgr->getFavoris();
 
     //print_r($favoris);
     
@@ -12,9 +8,18 @@
 <main>
 <div class="page-title">
     <h1>Favoris</h1>
+
+<?php if(!isset($_SESSION['idUser'])) {?>
+    <p>Connectez-vous pour afficher vos favoris.</p>
+</div>
+<?php } else { ?>
 </div>
 <div id="favoris">
     <?php
+        $favoris = $userManager->getFavoris();
+        if(empty($favoris))
+            echo "<p>Aucun favori défini.</p>";
+        else
         foreach($favoris as $tv)
         {
             ?>
@@ -42,6 +47,7 @@
     ?>
 
 </div>
+<?php } ?>
 </main>
 
 <?php include_once 'inc/footer.php'; ?>
