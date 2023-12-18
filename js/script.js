@@ -9,6 +9,28 @@ window.onload = function() {
   jsMyProfile();
 
   jsPorts();
+
+  jsArticle();
+}
+
+function jsArticle() {
+  let mainArticle = document.querySelector("main#article");
+  let boutonAjoutEval = document.getElementById("boutonAjoutEval");
+  
+  if (!mainArticle || !boutonAjoutEval) {
+    return;
+  }
+  
+  let faireEvaluationPopup = document.getElementById("faireEvaluationPopup");
+  let boutonAnnulerEval = document.getElementById("boutonAnnulerEval");
+
+  boutonAjoutEval.addEventListener("click", function() {
+    faireEvaluationPopup.classList.remove("hidden");
+  });
+
+  boutonAnnulerEval.addEventListener("click", function() {
+    faireEvaluationPopup.classList.add("hidden");
+  });
 }
 
 function jsMyProfile() {

@@ -365,6 +365,11 @@ body
     margin-bottom: 4%;
 }
 
+#faireEvaluationPopup textarea, #faireEvaluationPopup input {
+  width: 100%;
+  max-width: 100%;
+}
+
 .grid3C { 
     display: block; 
     line-height: 2.5;
@@ -420,7 +425,7 @@ main#profile form .grid
   padding: 10px;
 }
 
-main#profile #changeMdpBox, #portModelesPopup
+main#profile #changeMdpBox, #portModelesPopup, #faireEvaluationPopup
 {
   position: fixed;
   top: 0;
@@ -429,7 +434,7 @@ main#profile #changeMdpBox, #portModelesPopup
   right: 0;
 }
 
-main#profile #changeMdpBox > div, #portModelesPopup > #listeModeleDiv
+main#profile #changeMdpBox > div, #portModelesPopup > #listeModeleDiv, #faireEvaluationPopup > form
 {
   background-color: black;
   border-radius: 20px;

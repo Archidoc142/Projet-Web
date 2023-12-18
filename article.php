@@ -6,9 +6,13 @@ if (isset($THEmodele)) {
     $tv = $televiseurManager->getTeleviseurObjectByModele($THEmodele);
     $ports = $televiseurManager->getPortsByModel($THEmodele);
 }
+
+if (isset($_REQUEST['commentaire'])) {
+  $evaluationManager->insertEvaluation(new Evaluation($_REQUEST));
+}
 ?>
 
-<main>
+<main id="article">
     <h1 class="center titleArticle"><?php echo $tv->get_nom()?></h1>
     <div class="containerArticle">
         <img src='img/tv/<?php echo $tv->get_modele() ?>.png' alt='img_tv' draggable='false'>
@@ -27,6 +31,37 @@ if (isset($THEmodele)) {
             </div>
         </div>
     </div>
-    <a href="evaluations?modele=<?= $tv->get_modele();?>" class="button">Évaluations</a>
 
+    <div class="flex">
+      <a href="evaluations?modele=<?= $tv->get_modele();?>" class="button">Voir les évaluations</a>
+      
+      <?php
+      if (isset($_SESSION['idUser']) && !$evaluationManager->aDejaEvalueCeModele()) {
+        ?>
+        <p class="button" id="boutonAjoutEval">Ajouter une évaluation</p>
+        <?php
+      }
+      ?>
+    </div>
+
+    <div id="faireEvaluationPopup" class="hidden">
+      <form action="article?modele=<?= $tv->get_modele(); ?>" method="POST">
+        <h3>Évaluer <?= $tv->get_nom(); ?></h3>
+        <label for="titre">Titre</label>
+        <br>
+        <input type="text" id="titre" name="titre" required>
+
+        <label for="note">Note</label>
+        <input type="number" id="note" name="note" min="0" max="5" step="0.5" required>
+        <br>
+
+        <label for="commentaire">Commentaire</label>
+        <br>
+        <textarea name="commentaire" id="commentaire" cols="30" rows="10" required></textarea>
+
+        <button type="submit" class="button">Soumettre</button>
+
+        <button type="reset" id="boutonAnnulerEval" class="button">Annuler</button>
+      </form>
+    </div>
 <?php include_once 'inc/footer.php';?>
