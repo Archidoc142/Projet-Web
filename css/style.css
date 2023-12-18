@@ -444,7 +444,7 @@ main#profile #changeMdpBox > div, #portModelesPopup > #listeModeleDiv
   transform: translate(-50%, -50%);
   width: 80%;
   max-width: 500px;
-  max-height: 80vh;
+  max-height: 60vh;
   overflow: auto;
 }
 
