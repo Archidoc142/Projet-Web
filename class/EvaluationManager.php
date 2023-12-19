@@ -47,11 +47,11 @@ class EvaluationManager {
     }
 
     $paramArray = array(
-      ":id_utilisateur" => $_SESSION['idUser'], 
-      ":modele_televiseur" => $_REQUEST['modele'], 
-      ":titre" => $_REQUEST['titre'],
-      ":commentaire" => $_REQUEST['commentaire'], 
-      ":note" => $_REQUEST['note']
+      ":id_utilisateur" => htmlspecialchars($_SESSION['idUser']), 
+      ":modele_televiseur" => htmlspecialchars($_REQUEST['modele']), 
+      ":titre" => htmlspecialchars($_REQUEST['titre']),
+      ":commentaire" => htmlspecialchars($_REQUEST['commentaire']), 
+      ":note" => htmlspecialchars($_REQUEST['note'])
     );
 
     $query = $this->_bdd->prepare(self::INSERT_EVALUATION);
