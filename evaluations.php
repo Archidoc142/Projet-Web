@@ -16,7 +16,7 @@
           }
           else {
             ?>
-            <h1>Évaluations par <?= $userObj->get_pseudonyme(); ?></h1>
+            <h1>Évaluations par <a href="profile?idUser=<?= $userObj->get_id(); ?>"><?= $userObj->get_pseudonyme(); ?></a></h1>
             <?php
           }
 
@@ -56,7 +56,7 @@
       
         if (isset($televiseurObj)) {
           ?>
-          <h1>Évaluations de <?= $televiseurObj->get_nom(); ?></h1>
+          <h1>Évaluations de <a href="article?modele=<?= $televiseurObj->get_modele(); ?>"><?= $televiseurObj->get_nom(); ?></a></h1>
           <?php
 
           $evaluationArray = $evaluationManager->getModeleEvaluations($televiseurObj->get_modele());
