@@ -5,6 +5,11 @@ $THEmodele = htmlspecialchars($modele, ENT_QUOTES, 'UTF-8');
 if (isset($THEmodele)) {
     $tv = $televiseurManager->getTeleviseurObjectByModele($THEmodele);
     $ports = $televiseurManager->getPortsByModel($THEmodele);
+    $favoris = $favoriManager->getFavoriByModele($THEmodele);
+
+    if (isset($_REQUEST['modification'])) {
+        $favoriManager->modification($_SESSION['idUser'], $THEmodele);
+    }
 }
 ?>
 
@@ -27,6 +32,16 @@ if (isset($THEmodele)) {
             </div>
         </div>
     </div>
-    <a href="evaluations?modele=<?= $tv->get_modele();?>" class="button">Évaluations</a>
+    <div class="flex artBtn">
+        <a href="" class="button">Évaluations</a>
+        <?php if (isset($_SESSION['idUser'])) { ?>
+            <form id="favoriteForm" method="post" action="">
+                <input type="hidden" name="modification" value="<?= ($favoriManager->verifyExist($_SESSION['idUser'], $THEmodele)) ? "Retirer" : "Ajouter"; ?>">
+                <button type="submit" id="addFavorite">
+                    <?php echo ($favoriManager->verifyExist($_SESSION['idUser'], $THEmodele)) ? "Retirer des" : "Ajouter aux"; ?> favoris
+                </button>
+            </form>
+        <?php } ?>
+    </div>
 
 <?php include_once 'inc/footer.php';?>

@@ -178,7 +178,17 @@ nav button
 
 .ArticlePort { margin-top: 4%; }
 
-.artPortDiv { justify-content: space-evenly; }
+.artPortDiv { 
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.artBtn a, #favoriteForm {
+  margin: 0 2% 2% 2%;
+}
+
+.artBtn { justify-content: center; }
 
 body
 {
@@ -313,7 +323,7 @@ body
 
 .flex { display: flex; }
 
-.titleIndex { margin: 14% 0 5%; }
+.titleIndex { margin: 9% 0 5%; }
 
 #nav-fav-btn{ margin-right: 0.5rem; }
 
@@ -493,7 +503,7 @@ main#evaluations > div
   color: var(--orange);
 }
 
-.button:hover 
+.button:hover, #addFavorite:hover
 {
   color: var(--orange);
   background: linear-gradient(#000000, #3f3f3f);
@@ -1230,3 +1240,17 @@ main .container-television .desktop{
     }
 }
 
+#favoriteForm {
+  width: 50%;
+  margin-right: 2%;
+}
+
+#addFavorite{
+  background-color: #000;
+  color: #fff;
+  outline: 1px solid #ccc;
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+  text-decoration: underline;
+}

@@ -1,5 +1,5 @@
 <?php
-function loadClass($className) {
+ function loadClass($className) {
     require_once './class/' . $className . '.php';
  }
 
