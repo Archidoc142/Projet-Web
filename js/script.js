@@ -174,3 +174,9 @@ async function fetchTeleviseurs(event) {
 
   listeModelePopup.classList.remove("hidden");
 }
+
+const btnFavori = document.getElementById('addFavorite');
+
+btnFavori.addEventListener('click', () => {
+  alert("Modification des favoris");
+});

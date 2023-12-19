@@ -12,6 +12,7 @@
     $evaluationManager = new EvaluationManager($bdd);
     $televiseurManager = new TeleviseurManager($bdd);
     $portManager = new PortManager($bdd);
+    $favoriManager = new FavoriManager($bdd);
 
     if (isset($_POST['modificationProfil'])){
       $userModification = new User($_POST);
