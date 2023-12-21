@@ -11,6 +11,8 @@ window.onload = function() {
   jsPorts();
 
   jsArticle();
+
+  jsTelevision();
 }
 
 function jsArticle() {
@@ -30,6 +32,12 @@ function jsArticle() {
 
   boutonAnnulerEval.addEventListener("click", function() {
     faireEvaluationPopup.classList.add("hidden");
+  });
+
+  const btnFavori = document.getElementById('addFavorite');
+
+  btnFavori.addEventListener('click', () => {
+    alert("Modification des favoris");
   });
 }
 
@@ -175,8 +183,34 @@ async function fetchTeleviseurs(event) {
   listeModelePopup.classList.remove("hidden");
 }
 
-const btnFavori = document.getElementById('addFavorite');
+function jsTelevision() {
+  let main = document.getElementById("mainTelevision");
 
-btnFavori.addEventListener('click', () => {
-  alert("Modification des favoris");
-});
+  if (!main) {
+    return;
+  }
+
+  let cookieSearch = getCookie("televisionParameters");
+
+  if (cookieSearch && window.location.href.split("/").pop() == 'television') {
+    if (confirm("Reprendre là où vous en étiez à votre dernière recherche?")) {
+      window.location.href = "television?" + cookieSearch;
+    }
+  }
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}

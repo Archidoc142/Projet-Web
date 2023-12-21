@@ -14,7 +14,7 @@
     </div>
     <div id="marques">
         <?php foreach($marques as $index=>$marque) { ?>
-            <a href="television.php?cat=<?php echo($index + 1) ?>" class="marque">
+            <a href="television?cat=<?php echo($index + 1) ?>" class="marque">
                 <img src="img/marque/<?php echo($marque) ?>.png" alt="<?php echo($marque) ?>">
             </a>
                 

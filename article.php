@@ -37,11 +37,10 @@ if (isset($_REQUEST['commentaire'])) {
         </div>
     </div>
     <div class="flex artBtn">
-        <a href="" class="button">Évaluations</a>
         <?php if (isset($_SESSION['idUser'])) { ?>
             <form id="favoriteForm" method="post" action="">
                 <input type="hidden" name="modification" value="<?= ($favoriManager->verifyExist($_SESSION['idUser'], $THEmodele)) ? "Retirer" : "Ajouter"; ?>">
-                <button type="submit" id="addFavorite">
+                <button type="submit" id="addFavorite" class="button">
                     <?php echo ($favoriManager->verifyExist($_SESSION['idUser'], $THEmodele)) ? "Retirer des" : "Ajouter aux"; ?> favoris
                 </button>
             </form>
@@ -67,7 +66,10 @@ if (isset($_REQUEST['commentaire'])) {
         <br>
         <input type="text" id="titre" name="titre" required>
 
+        <br>
+
         <label for="note">Note</label>
+        <br>
         <input type="number" id="note" name="note" min="0" max="5" step="0.5" required>
         <br>
 

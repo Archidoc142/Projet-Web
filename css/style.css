@@ -448,6 +448,10 @@ main#profile #changeMdpBox > div, #portModelesPopup > #listeModeleDiv, #faireEva
   overflow: auto;
 }
 
+#faireEvaluationPopup input, #faireEvaluationPopup label, #faireEvaluationPopup textarea {
+  width: 100%;
+}
+
 main#profile .button 
 {
   width: 70%;

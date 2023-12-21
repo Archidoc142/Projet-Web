@@ -45,7 +45,7 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
 
 <h3>Creez un compte</h3>
 <p>Creer un compte pour acceder à toutes les fonctionnalités du site.</p>
-        <form id="registration-form" action="register.php" method="post">
+        <form id="registration-form" action="register" method="post">
             <label for="usernam">Nom d'utilisateur</label>
             <input type="text" name="pseudonyme" class="register-input">
 
@@ -53,7 +53,7 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
             <input type="email" name="courriel" id="email1" class="register-input" required>
 
             <label for="usernam">Mot de passe</label>
-            <input type="text" name="mdp" id="mdp" class="register-input" required>
+            <input type="password" name="mdp" id="mdp" class="register-input" required>
 
             <label for="usernam">Prenom</label>
             <input type="text" name="prenom" class="register-input">

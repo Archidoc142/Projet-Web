@@ -43,7 +43,7 @@
                     <form method="post" action="">
 
                     <div class="favori-buttons">
-                        <a href="article.php?modele=<?php echo $tv->get_modele()?>">Consulter</a>
+                        <a href="article?modele=<?php echo $tv->get_modele()?>">Consulter</a>
                             <input type="hidden" name="delete" value="<?php echo $tv->get_modele()?>">
                             <button type="submit" id="deleteFav">
                                Supprimer

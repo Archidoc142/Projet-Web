@@ -6,9 +6,22 @@ include_once 'inc/header.php';
 include_once 'class/UserManager.php';
 include_once 'class/TeleviseurManager.php';
 $tm = new TeleviseurManager($bdd);
+
+$parametres = "";
+
+foreach(array('mots', 'cat', 'option', 'filter', 'value') as $parametre) {
+  if (isset($_REQUEST[$parametre])) {
+      $parametres = $parametres . $parametre . '=' . $_REQUEST[$parametre] . '&';
+  }
+}
+
+if (!empty($parametres)) {
+  $parametres = substr($parametres, 0, -1);
+  setcookie("televisionParameters", $parametres, time() + 86400 * 30);
+}
 ?>
 
-<main>
+<main id="mainTelevision">
 
         <div class="search">
             <div>
@@ -16,7 +29,7 @@ $tm = new TeleviseurManager($bdd);
             </div>
 
             <div>
-                <form action="television" method="post">
+                <form action="television" method="GET">
                     <input type="text" name="mots" placeholder="Entez votre mot clé">
                     <button>Rechercher</button>
                 </form>
@@ -34,9 +47,9 @@ $tm = new TeleviseurManager($bdd);
             <?php } ?>
         
         </div>
-        <?php if(isset($_POST['mots'])){ ?>
+        <?php if(isset($_GET['mots'])){ ?>
             <div class="recherche">
-                <h4>Résultat de la recherche : <?= $_POST['mots'];  ?></h4>
+                <h4>Résultat de la recherche : <?= $_GET['mots'];  ?></h4>
             </div>
         <?php } ?>
        
@@ -84,9 +97,9 @@ $tm = new TeleviseurManager($bdd);
 
             <?php
 
-            if(isset($_POST['mots'])){
+            if(isset($_GET['mots'])){
 
-                $mots = $_POST['mots'];
+                $mots = $_GET['mots'];
                 $resultats = $tm->searchTeleviseur($mots); ?>
 
                 <?php
