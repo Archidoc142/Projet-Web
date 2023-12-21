@@ -52,15 +52,9 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
             <label for="usernam">Email</label>
             <input type="email" name="courriel" id="email1" class="register-input" required>
 
-            <label for="usernam">Repetez Email</label>
-            <input type="text" name="email2" id="email2" class="register-input">
-
             <label for="usernam">Mot de passe</label>
             <input type="text" name="mdp" id="mdp" class="register-input" required>
 
-            <label for="usernam">Repetez mot de passe</label>
-            <input type="text" name="password2" id="password2" class="register-input">
-           
             <label for="usernam">Prenom</label>
             <input type="text" name="prenom" class="register-input">
 

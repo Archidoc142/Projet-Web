@@ -12,7 +12,11 @@
 <?php if(!isset($_SESSION['idUser'])) {?>
     <p>Connectez-vous pour afficher vos favoris.</p>
 </div>
-<?php } else { ?>
+<?php } else { 
+    if(isset($_POST['delete']))
+    {
+        $favoriManager->modification($_SESSION['idUser'], $_POST['delete']);
+    }?>
 </div>
 <div id="favoris">
     <?php
@@ -36,10 +40,18 @@
                             </div>
                         </div>
                     </div>
+                    <form method="post" action="">
+
                     <div class="favori-buttons">
-                        <a href="">Consulter</a>
-                        <a href="">Supprimer</a>
+                        <a href="article.php?modele=<?php echo $tv->get_modele()?>">Consulter</a>
+                            <input type="hidden" name="delete" value="<?php echo $tv->get_modele()?>">
+                            <button type="submit" id="deleteFav">
+                               Supprimer
+                            </button>
+                        <!--a href="">Supprimer</a-->
                     </div>
+                    </form>
+
                 </div>
 
             <?php

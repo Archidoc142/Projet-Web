@@ -22,7 +22,7 @@ if (isset($_REQUEST['commentaire'])) {
     <div class="containerArticle">
         <img src='img/tv/<?php echo $tv->get_modele() ?>.png' alt='img_tv' draggable='false'>
         <div>
-            <h2>Information générale :</h1>
+            <h2>Informations générales :</h1>
             <div class="grid3C">
                 <div><p><span class='bold'>Modèle</span> : <?php echo $tv->get_modele() ?></p><p><span class='bold'>Marque</span> : <?php echo $tv->get_marque() ?></p><p><span class='bold'>OS</span> : <?php echo $tv->get_os() ?></p></div>
                 <div><p><span class='bold'>Type écran</span> : <?php echo $tv->get_type_ecran() ?></p><p><span class='bold'>Résolution</span> : <?php echo $tv->get_resolution() ?></p><p><span class='bold'>Fréquence</span> : <?php echo $tv->get_frequence()?> Hz</p></div>
@@ -48,7 +48,7 @@ if (isset($_REQUEST['commentaire'])) {
         <?php } ?>
     </div>
 
-    <div class="flex">
+    <div class="flex evalBtns">
       <a href="evaluations?modele=<?= $tv->get_modele();?>" class="button">Voir les évaluations</a>
       
       <?php

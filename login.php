@@ -11,10 +11,11 @@ $um = new UserManager($bdd);
     <div class="message-login">
     <?php 
 if (isset($_SESSION['idUser']) && isset($_SESSION['pseudo'])) {
-
-    ?><h2>Bienvenue <?php echo $_SESSION['pseudo']; ?></h2>
+    header("Location: index.php");
+    exit();
+    /*?><h2>Bienvenue <?php echo $_SESSION['pseudo']; ?></h2>
     </div>
-<?php
+    <?php*/
     }
     else
     {

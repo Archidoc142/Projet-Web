@@ -178,17 +178,7 @@ nav button
 
 .ArticlePort { margin-top: 4%; }
 
-.artPortDiv { 
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.artBtn a, #favoriteForm {
-  margin: 0 2% 2% 2%;
-}
-
-.artBtn { justify-content: center; }
+.artPortDiv { justify-content: space-evenly; }
 
 body
 {
@@ -323,7 +313,7 @@ body
 
 .flex { display: flex; }
 
-.titleIndex { margin: 9% 0 5%; }
+.titleIndex { margin: 14% 0 5%; }
 
 #nav-fav-btn{ margin-right: 0.5rem; }
 
@@ -373,11 +363,6 @@ body
 .containerArticle img { 
     width: 80%; 
     margin-bottom: 4%;
-}
-
-#faireEvaluationPopup textarea, #faireEvaluationPopup input {
-  width: 100%;
-  max-width: 100%;
 }
 
 .grid3C { 
@@ -513,6 +498,31 @@ main#evaluations > div
   color: var(--orange);
   background: linear-gradient(#000000, #3f3f3f);
 }
+
+#favoriteForm {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+#addFavorite{
+  background-color: #000;
+  color: #fff;
+  outline: 1px solid white;
+  border: none;
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  padding: 10px 0;
+  text-decoration: underline;
+}
+
+
+.artBtn, .evalBtns{
+  margin: 0 2%;
+}
+
+.artBtn { justify-content: center; }
 
 .hidden
 {
@@ -775,6 +785,7 @@ main .container-television section{
 
 main .container-television section p{
   width: 100%;
+  margin-bottom: 6px;
 }
 
 main .container-television a{
@@ -849,9 +860,21 @@ main .container-television .desktop{
     background-color: rgb(28, 106, 189);
 }
 
-.favori-buttons a:last-of-type
+/*.favori-buttons a:last-of-type
 {
     margin-left: 16px;
+    background-color: rgb(184, 48, 48);
+}*/
+
+.favori-buttons button
+{
+    margin-left: 16px;
+    width: 50%;
+    display: block;
+    text-decoration: none;
+    padding: 12px 40px;
+    color: white;
+    text-align: center;
     background-color: rgb(184, 48, 48);
 }
 
@@ -1127,29 +1150,50 @@ main .container-television .desktop{
 
     main .container-television section{
         display: grid;
-        grid-template-columns: 33.33% 33.33% 33.33%;
+        grid-template-columns: 50% 50%;
+        gap: 8px;
         width: 80%;
+        height: 100%;
         padding: 10px;
     }
 
-    main .container-television section div{
+
+    main .container-television section > div{
         width: 100%;
-        padding: 10px;
+        height: 100%;
+        padding: 16px;
+        background-color: #0000009a;
     }
 
     main .container-television section img{
-        width: 300px;
-        height: 180px;
+        width: auto;
+        height: auto;
+        max-width: 300px;
+        height: 260px;
+        display: block;
+        margin: auto;
+        padding: 32px 0;
+        text-align: center;
     }
+
+    main .container-television section div h2{
+      height: 120px;
+    }
+
+    main .container-television section div p{
+      max-height: 100px;
+    }
+
+    main .container-television section div a{
+      width: 100%;
+      text-align: center;
+  }
 
     main aside{
         display:none;
     }
 
-    main .container-television section div a{
-        width: 100%;
-        text-align: center;
-    }
+    
 
     .voirplus{
         float: right;
@@ -1243,19 +1287,14 @@ main .container-television .desktop{
     {
       width: 33.3%;
     }
+
+    main .container-television section{
+      grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+
+    main .container-television section img{
+      max-width: 350px;
+      min-height: 230px;
+    }
 }
 
-#favoriteForm {
-  width: 50%;
-  margin-right: 2%;
-}
-
-#addFavorite{
-  background-color: #000;
-  color: #fff;
-  outline: 1px solid #ccc;
-  width: 100%;
-  border-radius: 10px;
-  height: 100%;
-  text-decoration: underline;
-}

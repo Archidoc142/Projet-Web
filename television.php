@@ -1,13 +1,6 @@
 <?php
 require_once 'class/PDOFactory.php';
 $bdd = PDOFactory::getMySQLConnection();
-$bddResults = $bdd->query("SELECT t.*, m.nom AS marque, r.nom AS resolution, e.nom AS type_ecran FROM televiseur t
-                           JOIN marque m ON m.id = t.id_marque
-                           JOIN resolution r ON r.id = t.id_resolution
-                           JOIN type_ecran e ON e.id = t.id_type_ecran
-                           ORDER BY prix DESC
-                           LIMIT 2;");
-$fetched = $bddResults->fetchAll(PDO::FETCH_ASSOC); 
 
 include_once 'inc/header.php';
 include_once 'class/UserManager.php';
@@ -77,14 +70,12 @@ $tm = new TeleviseurManager($bdd);
             <div class="desktop">
                 <h6>Caractéritiques</h6>
                 <ul>
-                <?php
-                $categories = $tm->getCategorie();
-                foreach ($categories as $categorie) {
-                ?>
-                    <li><a href="television?option=<?= $categorie; ?>"><?php echo $categorie; ?></a></li>
-                <?php
-                }
-                ?>
+                    <li><a href="television?option=marque">Marque</a></li>
+                    <li><a href="television?option=os">Système d'exploitation</a></li>
+                    <li><a href="television?option=port">Type de port</a></li>
+                    <li><a href="television?option=resolution">Résolution des écrans</a></li>
+                    <li><a href="television?option=televiseur">Les télevisions</a></li>
+                    <li><a href="television?option=type_ecran">Les types d'écran</a></li>
                 </ul>
             </div>
            
@@ -124,15 +115,31 @@ $tm = new TeleviseurManager($bdd);
                 </div>
 
             <?php }
-
-            
             }
+
+            else if((isset($_GET['option'])&& $_GET['option']==="all") || !(isset($_GET['option']))){
+                $televiseurs = $tm->getTeleviseurs();
+                foreach($televiseurs as $televiseur){?>
+                <div class="televiseur"><!--div-->
+                    <img src="img/tv/<?=$televiseur->get_modele()?>.png" alt="<?=$televiseur->get_modele()?>">
+                    <div class="tv-info">
+                        <h2><?=$televiseur->get_nom();?></h2>
+                        <p>Modèle  : <?=$televiseur->get_modele()?></p>
+                        <h3><?=$televiseur->get_prix()?> $</h3>
+                        <a href="article?modele=<?=$televiseur->get_modele()?>">+ de détails</a>
+                    </div>
+                </div>
+
+            <?php }
+            }
+
+            // code non utilisé?
             else if(isset($_GET['filter']) && isset($_GET['value'])){
                 $categorie = $_GET['filter'];
                 $valeur = $_GET['value'];
                 $categories = $tm->getTelevisionsByCategorie($categorie, $valeur);
                 foreach($categories as $categorie){ ?>
-                     <h3><?= $categorie['nom'];?></h3>
+                    <h3><?= $categorie['nom'];?></h3>
                     <p>Modèle  : <?=$categorie['modele'];?></p>
                     <p>Prix    : <?=$categorie['prix'];?> $</p>
                     <a href="article?modele=<?=$categorie['modele']; ?>">+ de détails</a>
@@ -142,46 +149,17 @@ $tm = new TeleviseurManager($bdd);
             else if(isset($_GET['option'])){
                 $options = $tm->getTelevisionsCategorie($_GET['option']);
                 foreach($options as $option){ ?>
-
                     <p><?= $option['nom'];?></p>
-
-
             <?php    }
             }
-            else{
-
-                $televiseurs = $tm->getTeleviseur();
-                foreach($televiseurs as $televiseur){?>
-                <div><!--div-->
-                <img src="img/tv/<?= $televiseur['modele'];?>.png" alt="<?= $televiseur['nom'];?>">
-    
-                <div>
-                    <h3><?= $televiseur['nomTeleviseur'];?></h3></p>
-                    <p>Modèle  : <?=$televiseur['modele'];?></p>
-                    <p>Prix    : <?=$televiseur['prix'];?> $</p>
-                    <a href="article?modele=<?=$televiseur['modele']; ?>">+ de détails</a>
-                </div>
-                
-                </div>
-    
-    
-                <?php  }
-            
-            } 
-            
             ?>
-                
-            
-            
-           
-
             </section>
  
         </div >
         
-        <div class="voirplus">
-            <a href="television">Voir plus</a>
-        </div>
+        <!--div class="voirplus">
+            <a href="television?option=all">Voir plus</a>
+        </div-->
         
 
 <?php include_once 'inc/footer.php';?>
