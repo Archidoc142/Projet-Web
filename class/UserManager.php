@@ -7,10 +7,9 @@ class UserManager {
   const UPDATE_USER_INFOS = "UPDATE utilisateur SET courriel = :courriel, nom = :nom, prenom = :prenom, id_langue = :id_langue, photo = :photo WHERE id = :idUser";
   const UPDATE_USER_PASSWORD = "UPDATE utilisateur SET mdp = :nouveauMdp WHERE id = :idUser AND mdp = :ancienMdp";
 
+  const SELECT_USER_HASHED = "SELECT id, courriel, mdp FROM utilisateur WHERE courriel = :courriel";
   const SELECT_LANGUE='SELECT * FROM langue';
   const SELECT_LAST_USER ='SELECT * FROM utilisateur';
-  const SELECT_USER_ID='SELECT * FROM utilisateur WHERE courriel = :courriel AND mdp = :mdp';
-
   const SELECT_FAVORIS = TeleviseurManager::SELECT_TVS . " JOIN favoris f ON f.modele_televiseur = t.modele";
 
   private $_bdd;
@@ -30,7 +29,7 @@ public function addUser(User $user)
         $sql = 'INSERT INTO utilisateur (pseudonyme, mdp, courriel, nom, prenom, id_langue) VALUES (:pseudonyme, :mdp, :courriel, :nom, :prenom, :id_langue)';
         $query = $this->_bdd->prepare($sql);
         $params = array(':pseudonyme'=>$user->get_pseudonyme(), 
-                        ':mdp'=>$user->get_mdp(),
+                        ':mdp'=>password_hash($user->get_mdp(), PASSWORD_DEFAULT),
                         ':courriel'=>$user->get_courriel(), 
                         ':nom'=>$user->get_nom(), ':prenom'=>$user->get_prenom(), 
                         ':id_langue'=>$user->get_id_langue());
@@ -46,19 +45,17 @@ public function addUser(User $user)
 
 public function userExists($courriel, $mdp)
 {
-        $query = $this->_bdd->prepare(self::SELECT_USER_ID);
-        $query->bindParam(':courriel', $courriel);
-        $query->bindParam(':mdp', $mdp);
-        $query->execute();
-        $user = $query->fetch();
+  $query = $this->_bdd->prepare(self::SELECT_USER_HASHED);
+  $query->bindParam(':courriel', $courriel);
+  $query->execute();
+  $user = $query->fetch();
 
-        if($user){
-            return $user;
-        }
-        else{
-            return false;
-        }
-        
+  if ($user && password_verify($mdp, $user['mdp'])) {
+    return $user;
+  }
+  else {
+    return false;
+  } 
 }
 
 public function getLastUser(){

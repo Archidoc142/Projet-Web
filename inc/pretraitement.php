@@ -23,15 +23,14 @@
     }
 
     if (isset($_REQUEST['action'])) {
-      if ($_POST['action'] == "connexion") {
+      if (isset($_POST['action']) && $_POST['action'] == "connexion") {
         $courriel = $_POST['courriel'];
         $mdp = $_POST['mdp'];
         $user = $userManager->userExists($courriel, $mdp);
     
         if ($user) {
-            $_SESSION['error'] = "Succes";
+            $_SESSION['error'] = "Succès! Vous êtes biens connectés!";
             $_SESSION['idUser'] = $user['id'];
-            $_SESSION['pseudo'] = $user['pseudonyme'];
         } else {
             $_SESSION['error'] = "Les informations d'authentification sont incorrectes.";
             header("Location: login.php");
