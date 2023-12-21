@@ -196,6 +196,10 @@ function jsTelevision() {
     if (confirm("Reprendre là où vous en étiez à votre dernière recherche?")) {
       window.location.href = "television?" + cookieSearch;
     }
+    else
+    {
+      document.cookie = 'televisionParameters=; Max-Age=-99999999;';
+    }
   }
 }
 
