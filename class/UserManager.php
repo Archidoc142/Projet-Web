@@ -46,7 +46,7 @@ public function addUser(User $user)
   if ($result) {
     $_SESSION['idUser'] = $this->_bdd->lastInsertId();
   }
-  
+
   return $result;
 }
 
