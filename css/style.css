@@ -1254,7 +1254,7 @@ p
     }
 
     main .container-television .desktop ul li{
-        background-color: none;
+        background-color: transparent;
         list-style: none;
 
     }
