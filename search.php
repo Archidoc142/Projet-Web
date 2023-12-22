@@ -9,7 +9,7 @@ if (isset($_REQUEST['action'])) {
 
     <h1 class="center searchTitle">Rechercher des télévisions selon leurs évaluations</h1>
 
-    <form action="" method="post" class="searchEv">
+    <form action="search.php" method="post" class="searchEv">
         <label for="mot">Entrez un mot clé : </label>
         <input type="text" name="mot"><br>
 

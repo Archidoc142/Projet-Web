@@ -1,10 +1,5 @@
 <?php
-require_once 'class/PDOFactory.php';
-$bdd = PDOFactory::getMySQLConnection();
-$bddResults = $bdd->query("SELECT * FROM televiseur;");
 include_once 'inc/header.php';
-include_once 'class/UserManager.php';
-$um = new UserManager($bdd);
 ?>
 <main>
 <div id="register">
@@ -26,7 +21,7 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
     $user = new User($_REQUEST);
 
 
-    if ($um->addUser($user)) {
+    if ($userManager->addUser($user)) {
         
         echo '<h3>Félicitation votre compte à été enregistré avec succès.</h3>';
         echo '<p>Vous serez rédiriger sur votre profil dans un instant, sinon <a href="index.php">cliquez
@@ -34,11 +29,11 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
 
     } else {
 
-        echo '<p>Erreur lors de l\'inscription.</p><a href="register">Réassayer</a>';
+        echo '<p>Erreur lors de l\'inscription.</p><a href="register">Réessayez</a></div></div>';
     }
 
-    //$um = new UserManager($bdd);
-    //$lastuser= $um->getLastUser();
+    //$userManager = new UserManager($bdd);
+    //$lastuser= $userManager->getLastUser();
 }else{
 ?>
 </div>
@@ -46,25 +41,25 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
 <h3>Creez un compte</h3>
 <p>Creer un compte pour acceder à toutes les fonctionnalités du site.</p>
         <form id="registration-form" action="register" method="post">
-            <label for="usernam">Nom d'utilisateur</label>
-            <input type="text" name="pseudonyme" class="register-input">
+            <label for="pseudonyme">Nom d'utilisateur</label>
+            <input type="text" name="pseudonyme" id="pseudonyme" class="register-input">
 
-            <label for="usernam">Email</label>
+            <label for="email1">Email</label>
             <input type="email" name="courriel" id="email1" class="register-input" required>
 
-            <label for="usernam">Mot de passe</label>
+            <label for="mdp">Mot de passe</label>
             <input type="password" name="mdp" id="mdp" class="register-input" required>
 
-            <label for="usernam">Prenom</label>
-            <input type="text" name="prenom" class="register-input">
+            <label for="prenom">Prenom</label>
+            <input type="text" name="prenom" id="prenom" class="register-input">
 
-            <label for="usernam">Nom</label>
-            <input type="text" name="nom" class="register-input">
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" id="nom" class="register-input">
 
-            <label for="usernam">Langue</label>
+            <label for="langue">Langue</label>
             <select name="id_langue" id="langue" class="register-input">
             <?php
-                   $langues = $um->getLangue(); 
+                   $langues = $userManager->getLangue(); 
                    foreach($langues as $langue){ ?>
             <option value="<?= $langue['id']; ?>"><?= $langue['nom_complet']; ?></option>  
             <?php 
@@ -80,7 +75,7 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
 <?php
 }  
 ?>
-</main>
+
 
 
 

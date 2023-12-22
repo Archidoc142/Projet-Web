@@ -25,11 +25,11 @@ if (isset($_SESSION['idUser']) && isset($_SESSION['pseudo'])) {
         <p>Accedez à votre compte à tout moment.</p>
         <p><?= isset($_SESSION['error']) ? $_SESSION['error'] : ''; ?></p>
         <form action="login" method="post">
-            <label for="usernam">Entrer votre courriel</label>
-            <input type="email" name="courriel" class="login-input">
+            <label for="courriel">Entrer votre courriel</label>
+            <input type="email" name="courriel" id="courriel" class="login-input">
 
-            <label for="usernam">Entrez votre mot de passe</label>
-            <input type="password" name="mdp" class="login-input">
+            <label for="mdp">Entrez votre mot de passe</label>
+            <input type="password" name="mdp" id="mdp" class="login-input">
 
             <input type="hidden" name="action" value="connexion"> 
             
@@ -37,7 +37,6 @@ if (isset($_SESSION['idUser']) && isset($_SESSION['pseudo'])) {
         </form>
         
     </div>
-</main>
 <?php
     }
     include_once 'inc/footer.php';

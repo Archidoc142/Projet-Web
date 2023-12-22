@@ -22,11 +22,11 @@ if (isset($_REQUEST['commentaire'])) {
     <div class="containerArticle">
     <img src="img/tv/<?php echo (file_exists("img/tv/" . $tv->get_modele() . ".png")) ? $tv->get_modele() : "generic"; ?>.png" alt="<?= $tv->get_nom();?>">
         <div>
-            <h2>Informations générales :</h1>
+            <h2>Informations générales :</h2>
             <div class="grid3C">
-                <div><p><span class='bold'>Modèle</span> : <?php echo $tv->get_modele() ?></p><p><span class='bold'>Marque</span> : <?php echo $tv->get_marque() ?></p><p><span class='bold'>OS</span> : <?php echo $tv->get_os() ?></p></div>
-                <div><p><span class='bold'>Type écran</span> : <?php echo $tv->get_type_ecran() ?></p><p><span class='bold'>Résolution</span> : <?php echo $tv->get_resolution() ?></p><p><span class='bold'>Fréquence</span> : <?php echo $tv->get_frequence()?> Hz</p></div>
-                <div><p><span class='bold'>HDR</span> :<?php echo ($tv->get_hdr() == 1) ? "Oui" : "Non"; ?></p><span class='bold'><p><span class='bold'>Taille</span> : <?php echo $tv->get_taille() ?>"</p><p><span class='bold'>Prix</span> : <?php echo $tv->get_prix() ?> $</p></div>
+                <div><p class='bold'>Modèle : <?php echo $tv->get_modele() ?></p><p class='bold'>Marque : <?php echo $tv->get_marque() ?></p><p class='bold'>OS : <?php echo $tv->get_os() ?></p></div>
+                <div><p class='bold'>Type écran : <?php echo $tv->get_type_ecran() ?></p><p class='bold'>Résolution : <?php echo $tv->get_resolution() ?></p><p class='bold'>Fréquence : <?php echo $tv->get_frequence()?> Hz</p></div>
+                <div><p class='bold'>HDR :<?php echo ($tv->get_hdr() == 1) ? "Oui" : "Non"; ?></p><p class='bold'>Taille : <?php echo $tv->get_taille() ?>"</p><p class='bold'>Prix : <?php echo $tv->get_prix() ?> $</p></div>
             </div>
             <h2 class="ArticlePort">Ports : </h2>
             <div class="flex artPortDiv">
@@ -38,7 +38,7 @@ if (isset($_REQUEST['commentaire'])) {
     </div>
     <div class="flex artBtn">
         <?php if (isset($_SESSION['idUser'])) { ?>
-            <form id="favoriteForm" method="post" action="">
+            <form id="favoriteForm" method="post" action="article.php">
                 <input type="hidden" name="modification" value="<?= ($favoriManager->verifyExist($_SESSION['idUser'], $modele)) ? "Retirer" : "Ajouter"; ?>">
                 <button type="submit" id="addFavorite" class="button">
                     <?php echo ($favoriManager->verifyExist($_SESSION['idUser'], $modele)) ? "Retirer des" : "Ajouter aux"; ?> favoris

@@ -138,7 +138,6 @@
         <button type="submit">Soumettre</button>
 
     </form>
-</main>
 
 <?php
   include_once("inc/footer.php");

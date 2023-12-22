@@ -3,8 +3,9 @@
 ?>
 
 <main>
-  <h1>Erreur 404! Page introuvable...</h1>
-</main>
+  <div class="page-title">
+    <h1>Erreur 404! Page introuvable...</h1>
+  </div>
 
 <?php
   include_once("inc/footer.php");

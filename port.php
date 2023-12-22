@@ -20,7 +20,6 @@
         <?php
       }
     ?>
-    </div>
   </div>
 
   <div id="portModelesPopup" class="hidden">
@@ -30,8 +29,6 @@
       <p class="button">Fermer</p>
     </div>
   </div>
-</main>
-
 <?php
   include_once("inc/footer.php");
 ?>

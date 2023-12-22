@@ -75,7 +75,7 @@
           $langue = $langueManager->getLangueById($userObj->get_id_langue());
         ?>
           <label for="id_langue">Langue :</label>
-          <input type="text" name="id_langue" value="<?= $langue->get_nom_complet(); ?>" readonly>
+          <input type="text" name="id_langue" id="id_langue" value="<?= $langue->get_nom_complet(); ?>" readonly>
           
 
 
