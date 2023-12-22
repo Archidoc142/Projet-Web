@@ -8,10 +8,17 @@
         <?php
             if(isset($_POST['action']) && $_POST['action'] == "ajout")
             {
-                $televiseurManager->addTeleviseur($_POST);
-                echo "<h2>Téléviseur ajouté(?)</h2>";
+                $tv = $televiseurManager->getTeleviseurObjectByModele($_POST['modele']);
+                if(empty($tv))
+                {
+                    $televiseurManager->addTeleviseur($_POST);
+                    echo "<h2>Téléviseur ajouté</h2>";    
+                }
+                else
+                {
+                    echo "<h2>Erreur : le numéro de modèle fourni existe déjà.</h2>";    
+                }
             }
-            else {
         ?>
     </div>
   
@@ -131,8 +138,6 @@
         <button type="submit">Soumettre</button>
 
     </form>
-    <?php }
-    ?>
 </main>
 
 <?php
