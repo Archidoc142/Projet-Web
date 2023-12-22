@@ -38,7 +38,7 @@ if (isset($_REQUEST['commentaire'])) {
     </div>
     <div class="flex artBtn">
         <?php if (isset($_SESSION['idUser'])) { ?>
-            <form id="favoriteForm" method="post" action="article.php">
+            <form id="favoriteForm" method="post" action="article?modele=<?=$modele?>">
                 <input type="hidden" name="modification" value="<?= ($favoriManager->verifyExist($_SESSION['idUser'], $modele)) ? "Retirer" : "Ajouter"; ?>">
                 <button type="submit" id="addFavorite" class="button">
                     <?php echo ($favoriManager->verifyExist($_SESSION['idUser'], $modele)) ? "Retirer des" : "Ajouter aux"; ?> favoris
