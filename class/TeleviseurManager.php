@@ -28,8 +28,7 @@
         INNER JOIN marque ON televiseur.id_marque = marque.id
         WHERE .$categorie. = :valeur';
 
-        const INSERT_TELEVISEUR = 'INSERT INTO televiseur VALUES (:modele, :nom, :marque, :prix, :frequence, :type_ecran, :hdr, :resolution, :taille, :os, :garantie, :lien)';
-        const INSERT_TV_PORTS = 'INSERT INTO televiseur_port VALUES (:nb_port, :modele, :id_port)';
+        const INSERT_TELEVISEUR = 'INSERT INTO televiseur VALUES (:modele, :marque, :prix, :frequence, :type_ecran, :hdr, :resolution, :taille, :os, :garantie, :lien)';
 
         const FILTER_TELEVISEUR ='SELECT televiseur.*, marque.nom FROM televiseur 
         INNER JOIN marque ON televiseur.id_marque = marque.id
@@ -82,45 +81,8 @@
             return $this->_bdd->query(SELF::SELECT_TYPES_ECRAN)->fetchAll();
         }
 
-        public function addTeleviseur(array $postData)
-        {
-            $ports = array();
 
-            for($i = 1; $i <= 17; $i++)
-            {
-                if($postData[$i] != "0")
-                {
-                    array_push($ports, array($i, $postData[$i]));
-                }
-            }
-
-            $query = $this->_bdd->prepare(self::INSERT_TELEVISEUR);
-
-            $query->bindParam(':modele', $postData['modele']);
-            $query->bindParam(':nom', $postData['nom']);
-            $query->bindParam(':marque', $postData['marque']);
-            $query->bindParam(':prix', $postData['prix']);
-            $query->bindParam(':frequence', $postData['frequence']);
-            $query->bindParam(':type_ecran', $postData['type_ecran']);
-            $query->bindParam(':hdr', $postData['hdr'], PDO::PARAM_INT);
-            $query->bindParam(':resolution', $postData['resolution']);
-            $query->bindParam(':taille', $postData['taille'], PDO::PARAM_INT);
-            $query->bindParam(':os', $postData['os']);
-            $query->bindParam(':garantie', $postData['garantie']);
-            $query->bindParam(':lien', $postData['lien']);
-
-            assert($query->execute(), "L'insertion du téléviseur dans la base de données n'a pas fonctionné.");
-
-            foreach($ports as $port)
-            {
-                $query = $this->_bdd->prepare(self::INSERT_TV_PORTS);
-                $query->bindParam(':nb_port', $port[1]);
-                $query->bindParam(':id_port', $port[0]);
-                $query->bindParam(':modele', $postData['modele']);
-
-                assert($query->execute(), "L'insertion des ports du téléviseur dans la base de données n'a pas fonctionné.");
-            }
-        }
+        //public function addTeleviseur()
 
         public function getTeleviseurs() : array
         {
