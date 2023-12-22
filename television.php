@@ -105,7 +105,7 @@ if (!empty($parametres)) {
                 <?php
                 foreach($resultats as $resultat){ ?>
                 <div>
-                    <img src="img/tv/<?= $resultat['modele'];?>.png" alt="<?= $resultat['nom'];?>">
+                    <img src="img/tv/<?= file_exists("img/" + $resultat['modele'] + ".png") ? $resultat['modele'] : "generic";?>.png" alt="<?= $resultat['nom'];?>">
                     <div>
                         <h3><?= $resultat['nom'];?></h3>
                         <p>Modèle  : <?=$resultat['modele'];?></p>
@@ -118,7 +118,7 @@ if (!empty($parametres)) {
                 $categories = $tm->getTelevisionsMarque($_GET['cat']);
                 foreach($categories as $categorie){?>
                 <div>
-                    <img src="img/tv/<?= $categorie['modele'];?>.png" alt="<?= $categorie['nom'];?>">
+                <img src="img/tv/<?= file_exists("img/" + $categorie['modele'] + ".png") ? $categorie['modele'] : "generic";?>.png" alt="<?= $categorie['nom'];?>">
                     <div>
                         <h3><?= $categorie['nom'];?></h3>
                         <p>Modèle  : <?=$categorie['modele'];?></p>
@@ -134,7 +134,9 @@ if (!empty($parametres)) {
                 $televiseurs = $tm->getTeleviseurs();
                 foreach($televiseurs as $televiseur){?>
                 <div class="televiseur"><!--div-->
-                    <img src="img/tv/<?=$televiseur->get_modele()?>.png" alt="<?=$televiseur->get_modele()?>">
+
+                    
+                    <img src="img/tv/<?php echo (file_exists("img/tv/" . $televiseur->get_modele() . ".png")) ? $televiseur->get_modele() : "generic"; ?>.png" alt="<?= $resultat['nom'];?>">
                     <div class="tv-info">
                         <h2><?=$televiseur->get_nom();?></h2>
                         <p>Modèle  : <?=$televiseur->get_modele()?></p>

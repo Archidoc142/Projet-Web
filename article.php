@@ -20,7 +20,7 @@ if (isset($_REQUEST['commentaire'])) {
 <main id="article">
     <h1 class="center titleArticle"><?php echo $tv->get_nom()?></h1>
     <div class="containerArticle">
-        <img src='img/tv/<?php echo $tv->get_modele() ?>.png' alt='img_tv' draggable='false'>
+    <img src="img/tv/<?php echo (file_exists("img/tv/" . $tv->get_modele() . ".png")) ? $tv->get_modele() : "generic"; ?>.png" alt="<?= $tv->get_nom();?>">
         <div>
             <h2>Informations générales :</h1>
             <div class="grid3C">
