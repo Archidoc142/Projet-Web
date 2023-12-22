@@ -12,7 +12,8 @@
 
       foreach ($ports as $portObj) {
         ?>
-        <div class="portDiv" idport="<?= $portObj->get_id(); ?>">
+        <div class="portDiv">
+          <input type="hidden" value="<?= $portObj->get_id(); ?>">
           <p><?= $portObj->get_nom(); ?></p>
         </div>
         

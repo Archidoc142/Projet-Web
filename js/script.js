@@ -155,7 +155,7 @@ function addClickPortListener(element) {
 }
 
 async function fetchTeleviseurs(event) {
-  let idPort = event.currentTarget.getAttribute('idPort');
+  let idPort = event.currentTarget.firstElementChild.value;
   let portName = event.currentTarget.lastElementChild.innerHTML;
 
   let listeModelePopup = document.getElementById("portModelesPopup");
