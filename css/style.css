@@ -53,7 +53,7 @@ main#profile .grid {
     padding: 0;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'Whitney';
   margin-bottom: 10px;
 }
@@ -1302,3 +1302,83 @@ main .container-television .desktop{
     }
 }
 
+.searchTitle { margin: 5% 0 3% 0; }
+
+.searchEv{
+  display: block;
+  margin-bottom: 3%;
+  margin-left: 10%;
+}
+
+.searchEv button {
+  width: 40%;
+  margin: 8px 0 0 0;
+}
+
+.searchEv label { 
+  font-size: 24px;
+  font-family: Whitney;
+}
+
+.searchEv input, .searchEv select {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.searchEv select { color: rgb(230, 212, 49); }
+
+.containerSearchTV h4 {
+  color: var(--orange);
+}
+
+.containerSearchTV:hover {
+  background-color: #7b6c64;
+}
+
+.containerSearchTV a {
+  text-decoration: none;
+}
+
+.searchTvs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+
+.containerSearchTV { 
+  background-color: #3f3f3f;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 80%;
+  padding: 4%;
+  text-decoration: none;
+}
+.containerSearchTV img { width: 70%; }
+
+@media only screen and (min-width: 968px) {
+  .searchTvs {
+    margin: 6%;
+    gap: 3rem;
+  }
+
+  .containerSearchTV { 
+    width: 30%;
+    padding: 2%;
+  }
+
+  .searchEv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .searchEv button {
+    margin: 0;
+  }
+}

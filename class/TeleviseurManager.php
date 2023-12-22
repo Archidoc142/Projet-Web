@@ -18,6 +18,12 @@
         
         CONST SELECT_TELEVISEUR_OBJECT_BY_MODELE = "SELECT * FROM televiseur WHERE modele = :modele";
 
+        CONST SELECT_TELEVISEUR_BY_EVALUATION = "SELECT * FROM evaluation
+                          INNER JOIN televiseur ON modele = modele_televiseur
+                          WHERE note >= :note AND commentaire LIKE :commentaire";
+
+        CONST SELECT_EVALUATION_BY_MODELE = "SELECT note FROM evaluation WHERE modele_televiseur = :modele";
+
         const SELECT_TELEVISEURS_BY_PORT = "SELECT televiseur.* FROM televiseur INNER JOIN televiseur_port ON televiseur.modele = televiseur_port.modele_televiseur WHERE televiseur_port.id_port = :idPort";
 
         const SELECT_TELEVISEUR='SELECT televiseur.*, marque.nom as nomTeleviseur  FROM televiseur 
@@ -87,6 +93,32 @@
             $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR);
             $query->execute();
             $result = $query->fetchAll();
+            return $result;
+        }
+
+        public function getTvByEvaluation($note, $commentaire){
+            $televiseurs = array();
+            
+            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_BY_EVALUATION);
+            $query->bindParam(':note', $note);
+            $query->bindValue(':commentaire', '%'.$commentaire.'%');
+            $query->execute();
+            $result = $query->fetchAll();
+
+            foreach($result as $tv)
+            {
+                $ports = $this->getPortsByModel($tv['modele']);
+                array_push($televiseurs, new Televiseur($tv, $ports));
+            }
+
+            return $televiseurs;
+        }
+
+        public function getEvaluationByModele($modele){
+            $query = $this->_bdd->prepare(self::SELECT_EVALUATION_BY_MODELE);
+            $query->bindParam(':modele', $modele);
+            $query->execute();
+            $result = $query->fetch();
             return $result;
         }
 
