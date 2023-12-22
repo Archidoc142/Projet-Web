@@ -13,6 +13,18 @@ window.onload = function() {
   jsArticle();
 
   jsTelevision();
+
+  const deleteFavBtns = document.querySelectorAll(".favori-buttons button");
+  
+  deleteFavBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      if(!confirm("Voulez-vous vraiment supprimer ce favori?"))
+      {
+        e.preventDefault();
+      }
+    })
+  })
+
 }
 
 function jsArticle() {
@@ -39,6 +51,7 @@ function jsArticle() {
   btnFavori.addEventListener('click', () => {
     alert("Modification des favoris");
   });
+
 }
 
 function jsMyProfile() {

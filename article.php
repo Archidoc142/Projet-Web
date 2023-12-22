@@ -1,14 +1,14 @@
 <?php
 include_once 'inc/header.php';
 $modele = isset($_GET['modele']) ? $_GET['modele'] : '';
-$THEmodele = htmlspecialchars($modele, ENT_QUOTES, 'UTF-8');
-if (isset($THEmodele)) {
-    $tv = $televiseurManager->getTeleviseurObjectByModele($THEmodele);
-    $ports = $televiseurManager->getPortsByModel($THEmodele);
-    $favoris = $favoriManager->getFavoriByModele($THEmodele);
+$modele = htmlspecialchars($modele, ENT_QUOTES, 'UTF-8');
+if (isset($modele)) {
+    $tv = $televiseurManager->getTeleviseurObjectByModele($modele);
+    $ports = $televiseurManager->getPortsByModel($modele);
+    $favoris = $favoriManager->getFavoriByModele($modele);
 
     if (isset($_REQUEST['modification'])) {
-        $favoriManager->modification($_SESSION['idUser'], $THEmodele);
+        $favoriManager->modification($_SESSION['idUser'], $modele);
     }
 }
 
@@ -39,9 +39,9 @@ if (isset($_REQUEST['commentaire'])) {
     <div class="flex artBtn">
         <?php if (isset($_SESSION['idUser'])) { ?>
             <form id="favoriteForm" method="post" action="">
-                <input type="hidden" name="modification" value="<?= ($favoriManager->verifyExist($_SESSION['idUser'], $THEmodele)) ? "Retirer" : "Ajouter"; ?>">
+                <input type="hidden" name="modification" value="<?= ($favoriManager->verifyExist($_SESSION['idUser'], $modele)) ? "Retirer" : "Ajouter"; ?>">
                 <button type="submit" id="addFavorite" class="button">
-                    <?php echo ($favoriManager->verifyExist($_SESSION['idUser'], $THEmodele)) ? "Retirer des" : "Ajouter aux"; ?> favoris
+                    <?php echo ($favoriManager->verifyExist($_SESSION['idUser'], $modele)) ? "Retirer des" : "Ajouter aux"; ?> favoris
                 </button>
             </form>
         <?php } ?>

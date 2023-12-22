@@ -35,9 +35,9 @@
         const INSERT_TELEVISEUR = 'INSERT INTO televiseur VALUES (:modele, :nom, :marque, :prix, :frequence, :type_ecran, :hdr, :resolution, :taille, :os, :garantie, :lien)';
         const INSERT_TV_PORTS = 'INSERT INTO televiseur_port VALUES (:nb_port, :modele, :id_port)';
 
-        const FILTER_TELEVISEUR ='SELECT televiseur.*, marque.nom FROM televiseur 
-        INNER JOIN marque ON televiseur.id_marque = marque.id
-        WHERE televiseur.nom LIKE :mots OR modele LIKE :mots OR marque.nom LIKE :mots';
+        const FILTER_TELEVISEUR ='SELECT televiseur.* FROM televiseur 
+                                INNER JOIN marque ON televiseur.id_marque = marque.id
+                                WHERE televiseur.nom LIKE :mots OR modele LIKE :mots OR marque.nom LIKE :mots';
 
         const SELECT_MARQUES = 'SELECT * FROM marque';
         const SELECT_MARQUES_NOMS = "SELECT nom FROM marque";
@@ -278,14 +278,6 @@
           }
 
           return $televiseurs;
-        }
-
-        public function getTelevisionsByCategorie($categorie, $valeur){
-            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_BY_CATEGORIE);
-            $query->bindParam(':valeur', $valeur);
-            $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
         }
 
         public function getTeleviseursByMarque(int $idMarque) 

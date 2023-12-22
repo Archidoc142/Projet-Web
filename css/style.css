@@ -963,6 +963,16 @@ main .container-television .desktop{
   padding: 8px 48px;
 }
 
+p
+{
+  margin-bottom: 0;
+}
+
+.part2-Index div div
+{
+  padding-bottom: 24px;
+}
+
 /* Responsive */
 @media only screen and (min-width: 968px) {
   /* General */
@@ -1334,7 +1344,33 @@ main .container-television .desktop{
       width: 100%;
       text-align: center;
       font-size: 36px;
-      padding: 48px 0 24px 0;
+      padding: 16px 0 24px 0;
+    }
+
+    #favoris h3
+    {
+      text-align: left;
+      padding: 0;
+    }
+
+    #favoris
+    {
+      width: 75%;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .favori
+    {
+      width: 600px;
+    }
+
+    .modele
+    {
+      height: 250px;
     }
 }
 
