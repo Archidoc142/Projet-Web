@@ -939,36 +939,6 @@ main .container-television .desktop{
     object-fit: cover;
 }
 
-#ajout
-{
-  width: 450px;
-  margin: auto;
-}
-
-#ajout label, #ajout input, #ajout select
-{
-  width: 100%;
-}
-
-#ajout input, #ajout select
-{
-  margin-bottom: 16px;
-  padding: 8px 0;
-}
-
-#ajout h3
-{
-  margin-top: 24px;
-}
-
-#ajout button
-{
-  margin: 24px auto 48px auto;
-  display: block;
-  border: none;
-  padding: 8px 48px;
-}
-
 /* Responsive */
 @media only screen and (min-width: 968px) {
   /* General */
@@ -1299,48 +1269,6 @@ main .container-television .desktop{
     #marques .marque
     {
       width: 50%;
-    }
-
-    /* Ajout téléviseur (Hicham) */
-    #ajout
-    {
-      width: 90%;
-    }
-
-    .inputs
-    {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-
-    .input
-    {
-      width: 47%;
-    }
-
-    .ports
-    {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: center;
-      padding-bottom: 24px;
-    }
-
-    .port
-    {
-      width: 18%;
-    }
-
-    h3
-    {
-      width: 100%;
-      text-align: center;
-      font-size: 36px;
-      padding: 48px 0 24px 0;
     }
 }
 
