@@ -34,7 +34,7 @@ if(isset($_REQUEST['action']) && $_REQUEST['action']=="inscription"){
 
     } else {
 
-        echo '<p>Erreur lors de l\'inscription.</p><a href="register">Réassayer</a>';
+        echo '<p>Erreur lors de l\'inscription.</p>';
     }
 
     //$um = new UserManager($bdd);
