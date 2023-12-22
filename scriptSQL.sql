@@ -7,7 +7,7 @@ CREATE TABLE utilisateur (
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     pseudonyme VARCHAR(63) NOT NULL,
     mdp VARCHAR(63) NOT NULL,
-    courriel VARCHAR(63) NOT NULL,
+    courriel VARCHAR(63) NOT NULL UNIQUE,
     nom VARCHAR(63) NOT NULL,
     prenom VARCHAR(63) NOT NULL,
     id_langue INT NOT NULL,
