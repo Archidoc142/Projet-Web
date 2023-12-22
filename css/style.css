@@ -864,12 +864,6 @@ main .container-television .desktop{
     background-color: rgb(28, 106, 189);
 }
 
-/*.favori-buttons a:last-of-type
-{
-    margin-left: 16px;
-    background-color: rgb(184, 48, 48);
-}*/
-
 .favori-buttons button
 {
     margin-left: 16px;

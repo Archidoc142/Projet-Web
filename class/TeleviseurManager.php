@@ -24,6 +24,10 @@
                                                 INNER JOIN marque ON televiseur.id_marque = marque.id
                                                 WHERE id_marque = :id_marque';
 
+        const SELECT_TELEVISEURS_BY_MARQUE='SELECT televiseur.* FROM televiseur 
+                                            INNER JOIN marque ON televiseur.id_marque = marque.id
+                                            WHERE id_marque = :id_marque';
+
         const SELECT_TELEVISEUR_BY_CATEGORIE = 'SELECT televiseur.*, marque.nom FROM televiseur
         INNER JOIN marque ON televiseur.id_marque = marque.id
         WHERE .$categorie. = :valeur';
@@ -140,13 +144,21 @@
 
         public function searchTeleviseur($mots)
         {
+            $televiseurs = array();
+
             $query = $this->_bdd->prepare(self::FILTER_TELEVISEUR);
             $mots = '%' . $mots . '%';
             $query->bindParam(':mots', $mots);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    
-            return $result;
+
+            foreach($result as $tv)
+            {
+                $ports = $this->getPortsByModel($tv['modele']);
+                array_push($televiseurs, new Televiseur($tv, $ports));
+            }
+
+            return $televiseurs;
         }
 
         public function getTelevisionsCategorie($categorie){
@@ -157,22 +169,6 @@
         
             return $result;
         }
-
-        // public function getTeleviseurByModele($_modele)
-        // {
-        //     $query = $this->_bdd->prepare(SELF::SELECT_TV_BY_MODEL);
-        //     $query->bindParam(':modele', $_modele);
-        //     $query->execute();
-
-        //     $result = $query->fetch();
-
-        //     $ports = $this->getPortsByModel($_modele);
-
-        //     $tv = new Televiseur($result, $ports);
-
-        //     return $tv;
-
-        // }
 
         public function getPortsByModel($_modele) : array
         {
@@ -267,11 +263,38 @@
 
         public function getTeleviseursByPort(int $idPort) 
         {
-          $televiseursArray = array();
+          $televiseurs = array();
 
           $query = $this->_bdd->prepare(self::SELECT_TELEVISEURS_BY_PORT);
       
           $query->execute(array(':idPort' => $idPort));
+      
+          $result = $query->fetchAll();
+      
+          foreach($result as $tv)
+          {
+              $ports = $this->getPortsByModel($tv['modele']);
+              array_push($televiseurs, new Televiseur($tv, $ports));
+          }
+
+          return $televiseurs;
+        }
+
+        public function getTelevisionsByCategorie($categorie, $valeur){
+            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_BY_CATEGORIE);
+            $query->bindParam(':valeur', $valeur);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getTeleviseursByMarque(int $idMarque) 
+        {
+          $televiseursArray = array();
+
+          $query = $this->_bdd->prepare(self::SELECT_TELEVISEURS_BY_MARQUE);
+      
+          $query->execute(array(':id_marque' => $idMarque));
       
           $bddResult = $query->fetchAll();
       
@@ -281,21 +304,14 @@
       
           return $televiseursArray;
         }
-
-        public function getTelevisionsByCategorie($categorie, $valeur){
-            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_BY_CATEGORIE);
-            $query->bindParam(':valeur', $valeur);
+    
+        public function getTelevisionsMarque($id_marque)
+        {
+            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_MARQUE);
+            $query->bindParam(':id_marque', $id_marque);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
             return $result;
-            }
-    
-            public function getTelevisionsMarque($id_marque){
-                $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_MARQUE);
-                $query->bindParam(':id_marque', $id_marque);
-                $query->execute();
-                $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                return $result;
-                }
+        }
     }
 ?>
