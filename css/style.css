@@ -1432,10 +1432,6 @@ p
 
 .searchEv select { color: rgb(230, 212, 49); }
 
-.containerSearchTV h4 {
-  color: var(--orange);
-}
-
 .containerSearchTV:hover {
   background-color: #7b6c64;
 }

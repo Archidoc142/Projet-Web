@@ -37,7 +37,6 @@ if (isset($_REQUEST['action'])) {
                         </div>
                         <div>
                             <h3><?php echo $row->get_nom() ?></h3>
-                            <h4>Note : <?php echo $televiseurManager->getEvaluationByModele($row->get_modele())[0]; ?> / 5</h4>
                         </div>
                     </a>
                 </div>
