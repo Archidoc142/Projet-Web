@@ -22,5 +22,7 @@ $tvs = $televiseurManager->getTopTwoTeleviseurs();
                   </article>";
             echo "<p>Prix : " . $row->get_prix() . "$</p></div>";
             echo "</div>"; } ?>
+
+            <a href="search" class="button">Rechercher par évaluation</a>
     </div>
 <?php include_once 'inc/footer.php';?>
