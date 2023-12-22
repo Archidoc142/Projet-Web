@@ -50,27 +50,27 @@ if (!empty($parametres)) {
 
         <div class="container-television">
             <aside>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Categorie
-                        </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <?php
-                                    $categories = $televiseurManager->getCategorie();
-                                    foreach ($categories as $categorie) {
-                                ?>
-                                <a href="television?option=<?= $categorie; ?>"><?php echo $categorie; ?></a>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Categorie
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <?php
+                        $categories = $televiseurManager->getCategorie();
+                        foreach ($categories as $categorie) {
+                    ?>
+                    <a href="television?option=<?= $categorie; ?>"><?php echo $categorie; ?></a>
+                    <?php
+                    }
+                    ?>
                     </div>
                 </div>
+            </div>
+
             </aside>
 
             <div class="desktop">
