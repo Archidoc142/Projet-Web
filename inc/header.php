@@ -58,6 +58,9 @@
                 <li><a href="index">Accueil</a></li>
                 <li><a href="marque">Marques</a></li>
                 <li><a href="television">Téléviseurs</a></li>
+                <?php if (isset($_SESSION['idUser'])) {?>
+                    <li><a href="ajout-televiseur">Ajouter un téléviseur</a></li>
+                <?php } ?>
                 <li><a href="port">Ports</a></li>
             </ul>
         </div>

@@ -29,7 +29,7 @@
             ?>
                 <div class="favori">
                     <div class="favori-row">
-                        <img src="img/tv/<?php echo $tv->get_modele()?>.png" alt="<?php echo $tv->get_modele()?>">
+                        <img src="img/tv/<?php echo (file_exists("img/tv/" . $tv->get_modele() . ".png")) ? $tv->get_modele() : "generic"; ?>.png" alt="<?= $tv->get_nom();?>">
                         <div class="favori-details">
                             <div class="modele">
                                 <h1><?php echo $tv->get_marque() . " " . $tv->get_nom() ?></h1>

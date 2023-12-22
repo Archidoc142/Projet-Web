@@ -864,12 +864,6 @@ main .container-television .desktop{
     background-color: rgb(28, 106, 189);
 }
 
-/*.favori-buttons a:last-of-type
-{
-    margin-left: 16px;
-    background-color: rgb(184, 48, 48);
-}*/
-
 .favori-buttons button
 {
     margin-left: 16px;
@@ -937,6 +931,46 @@ main .container-television .desktop{
     height: 100%;
     border-radius: 10px;
     object-fit: cover;
+}
+
+#ajout
+{
+  width: 450px;
+  margin: auto;
+}
+
+#ajout label, #ajout input, #ajout select
+{
+  width: 100%;
+}
+
+#ajout input, #ajout select
+{
+  margin-bottom: 16px;
+  padding: 8px 0;
+}
+
+#ajout h3
+{
+  margin-top: 24px;
+}
+
+#ajout button
+{
+  margin: 24px auto 48px auto;
+  display: block;
+  border: none;
+  padding: 8px 48px;
+}
+
+p
+{
+  margin-bottom: 0;
+}
+
+.part2-Index div div
+{
+  padding-bottom: 24px;
 }
 
 /* Responsive */
@@ -1269,6 +1303,74 @@ main .container-television .desktop{
     #marques .marque
     {
       width: 50%;
+    }
+
+    /* Ajout téléviseur (Hicham) */
+    #ajout
+    {
+      width: 90%;
+    }
+
+    .inputs
+    {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .input
+    {
+      width: 47%;
+    }
+
+    .ports
+    {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      padding-bottom: 24px;
+    }
+
+    .port
+    {
+      width: 18%;
+    }
+
+    h3
+    {
+      width: 100%;
+      text-align: center;
+      font-size: 36px;
+      padding: 16px 0 24px 0;
+    }
+
+    #favoris h3
+    {
+      text-align: left;
+      padding: 0;
+    }
+
+    #favoris
+    {
+      width: 75%;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .favori
+    {
+      width: 600px;
+    }
+
+    .modele
+    {
+      height: 250px;
     }
 }
 

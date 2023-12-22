@@ -26,32 +26,38 @@
 
         const SELECT_TELEVISEURS_BY_PORT = "SELECT televiseur.* FROM televiseur INNER JOIN televiseur_port ON televiseur.modele = televiseur_port.modele_televiseur WHERE televiseur_port.id_port = :idPort";
 
-        const SELECT_TELEVISEUR='SELECT televiseur.*, marque.nom as nomTeleviseur  FROM televiseur 
-                          INNER JOIN marque ON televiseur.id_marque = marque.id
-                          INNER JOIN type_ecran ON televiseur.id_type_ecran = type_ecran.id
-                          INNER JOIN resolution ON televiseur.id_resolution = resolution.id
-                          INNER JOIN os ON televiseur.id_os = os.id LIMIT 10';
-
         const SELECT_TELEVISEUR_MARQUE='SELECT televiseur.*, marque.nom FROM televiseur 
                                                 INNER JOIN marque ON televiseur.id_marque = marque.id
                                                 WHERE id_marque = :id_marque';
+
+        const SELECT_TELEVISEURS_BY_MARQUE='SELECT televiseur.* FROM televiseur 
+                                            INNER JOIN marque ON televiseur.id_marque = marque.id
+                                            WHERE id_marque = :id_marque';
 
         const SELECT_TELEVISEUR_BY_CATEGORIE = 'SELECT televiseur.*, marque.nom FROM televiseur
         INNER JOIN marque ON televiseur.id_marque = marque.id
         WHERE .$categorie. = :valeur';
 
-        const FILTER_TELEVISEUR ='SELECT televiseur.*, marque.nom FROM televiseur 
-        INNER JOIN marque ON televiseur.id_marque = marque.id
-        WHERE televiseur.nom LIKE :mots OR modele LIKE :mots OR marque.nom LIKE :mots';
+        const INSERT_TELEVISEUR = 'INSERT INTO televiseur VALUES (:modele, :nom, :marque, :prix, :frequence, :type_ecran, :hdr, :resolution, :taille, :os, :garantie, :lien)';
+        const INSERT_TV_PORTS = 'INSERT INTO televiseur_port VALUES (:nb_port, :modele, :id_port)';
 
-        const SELECT_MARQUE='SELECT * FROM marque';
-        const SELECT_MARQUES = "SELECT nom FROM marque";
+        const FILTER_TELEVISEUR ='SELECT televiseur.* FROM televiseur 
+                                INNER JOIN marque ON televiseur.id_marque = marque.id
+                                WHERE televiseur.nom LIKE :mots OR modele LIKE :mots OR marque.nom LIKE :mots';
+
+        const SELECT_MARQUES = 'SELECT * FROM marque';
+        const SELECT_MARQUES_NOMS = "SELECT nom FROM marque";
 
         const SELECT_CATEGORIE ='SHOW TABLES';
 
-        const SELECT_PORTS = "SELECT nom FROM port";
+        const SELECT_PORTS_NOMS = "SELECT nom FROM port";
         const SELECT_PORTS_BY_MODEL = "SELECT p.nom, tp.nb_port FROM televiseur_port tp JOIN port p ON tp.id_port = p.id JOIN televiseur t ON tp.modele_televiseur = t.modele WHERE t.modele = :modele";
-    
+        const SELECT_ALL_PORTS = "SELECT * FROM port";
+
+        const SELECT_TYPES_ECRAN = "SELECT * FROM type_ecran";
+        const SELECT_RESOLUTIONS = "SELECT * FROM resolution";
+        const SELECT_OS = "SELECT * FROM os";
+        
         const TOP_TWO = "ORDER BY prix DESC LIMIT 2";
 
         private $_bdd;
@@ -59,6 +65,71 @@
         public function __construct(PDO $bdd)
         {
             $this->_bdd = $bdd;
+        }
+
+        public function getAllPorts() : array
+        {
+            return $this->_bdd->query(SELF::SELECT_ALL_PORTS)->fetchAll();
+        }
+
+        public function getAllMarques() : array
+        {
+            return $this->_bdd->query(SELF::SELECT_MARQUES)->fetchAll();
+        }
+
+        public function getResolutions() : array
+        {
+            return $this->_bdd->query(SELF::SELECT_RESOLUTIONS)->fetchAll();
+        }
+
+        public function getOSes() : array
+        {
+            return $this->_bdd->query(SELF::SELECT_OS)->fetchAll();
+        }
+
+        public function getTypesEcran() : array
+        {
+            return $this->_bdd->query(SELF::SELECT_TYPES_ECRAN)->fetchAll();
+        }
+
+        public function addTeleviseur(array $postData)
+        {
+            $ports = array();
+
+            for($i = 1; $i <= 17; $i++)
+            {
+                if($postData[$i] != "0")
+                {
+                    array_push($ports, array($i, $postData[$i]));
+                }
+            }
+
+            $query = $this->_bdd->prepare(self::INSERT_TELEVISEUR);
+
+            $query->bindParam(':modele', $postData['modele']);
+            $query->bindParam(':nom', $postData['nom']);
+            $query->bindParam(':marque', $postData['marque']);
+            $query->bindParam(':prix', $postData['prix']);
+            $query->bindParam(':frequence', $postData['frequence']);
+            $query->bindParam(':type_ecran', $postData['type_ecran']);
+            $query->bindParam(':hdr', $postData['hdr'], PDO::PARAM_INT);
+            $query->bindParam(':resolution', $postData['resolution']);
+            $query->bindParam(':taille', $postData['taille'], PDO::PARAM_INT);
+            $query->bindParam(':os', $postData['os']);
+            $query->bindParam(':garantie', $postData['garantie']);
+            $query->bindParam(':lien', $postData['lien']);
+
+            assert($query->execute(), "L'insertion du téléviseur dans la base de données n'a pas fonctionné.");
+
+            foreach($ports as $port)
+            {
+                $query = $this->_bdd->prepare(self::INSERT_TV_PORTS);
+                $query->bindParam(':nb_port', $port[1]);
+                $query->bindParam(':id_port', $port[0]);
+                $query->bindParam(':modele', $postData['modele']);
+
+                assert($query->execute(), "L'insertion des ports du téléviseur dans la base de données n'a pas fonctionné.");
+            }
         }
 
         public function getTeleviseurs() : array
@@ -79,21 +150,21 @@
 
         public function searchTeleviseur($mots)
         {
-            
+            $televiseurs = array();
+
             $query = $this->_bdd->prepare(self::FILTER_TELEVISEUR);
             $mots = '%' . $mots . '%';
             $query->bindParam(':mots', $mots);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    
-            return $result;
-        }
 
-        public function getTeleviseur(){
-            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR);
-            $query->execute();
-            $result = $query->fetchAll();
-            return $result;
+            foreach($result as $tv)
+            {
+                $ports = $this->getPortsByModel($tv['modele']);
+                array_push($televiseurs, new Televiseur($tv, $ports));
+            }
+
+            return $televiseurs;
         }
 
         public function getTvByEvaluation($note, $commentaire){
@@ -131,22 +202,6 @@
             return $result;
         }
 
-        // public function getTeleviseurByModele($_modele)
-        // {
-        //     $query = $this->_bdd->prepare(SELF::SELECT_TV_BY_MODEL);
-        //     $query->bindParam(':modele', $_modele);
-        //     $query->execute();
-
-        //     $result = $query->fetch();
-
-        //     $ports = $this->getPortsByModel($_modele);
-
-        //     $tv = new Televiseur($result, $ports);
-
-        //     return $tv;
-
-        // }
-
         public function getPortsByModel($_modele) : array
         {
             $ports = array();
@@ -168,7 +223,7 @@
         public function getMarques() : array
         {
             $marques = array();
-            $result = $this->_bdd->query(SELF::SELECT_MARQUES)->fetchAll();
+            $result = $this->_bdd->query(SELF::SELECT_MARQUES_NOMS)->fetchAll();
             
             foreach($result as $marque)
             {
@@ -178,11 +233,12 @@
         }
 
         public function getMarque(){
-            $query = $this->_bdd->prepare(self::SELECT_MARQUE);
+            $query = $this->_bdd->prepare(self::SELECT_MARQUES);
             $query->execute();
             $result = $query->fetchAll();
             return $result;
         }
+
         public function getCategorie(){
             $query = $this->_bdd->prepare(self::SELECT_CATEGORIE);
             $query->execute();
@@ -195,7 +251,7 @@
         public function getPorts() : array
         {
             $ports = array();
-            $result = $this->_bdd->query(SELF::SELECT_PORTS)->fetchAll();
+            $result = $this->_bdd->query(SELF::SELECT_PORTS_NOMS)->fetchAll();
             
             foreach($result as $port)
             {
@@ -239,11 +295,30 @@
 
         public function getTeleviseursByPort(int $idPort) 
         {
-          $televiseursArray = array();
+          $televiseurs = array();
 
           $query = $this->_bdd->prepare(self::SELECT_TELEVISEURS_BY_PORT);
       
           $query->execute(array(':idPort' => $idPort));
+      
+          $result = $query->fetchAll();
+      
+          foreach($result as $tv)
+          {
+              $ports = $this->getPortsByModel($tv['modele']);
+              array_push($televiseurs, new Televiseur($tv, $ports));
+          }
+
+          return $televiseurs;
+        }
+
+        public function getTeleviseursByMarque(int $idMarque) 
+        {
+          $televiseursArray = array();
+
+          $query = $this->_bdd->prepare(self::SELECT_TELEVISEURS_BY_MARQUE);
+      
+          $query->execute(array(':id_marque' => $idMarque));
       
           $bddResult = $query->fetchAll();
       
@@ -253,21 +328,14 @@
       
           return $televiseursArray;
         }
-
-        public function getTelevisionsByCategorie($categorie, $valeur){
-            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_BY_CATEGORIE);
-            $query->bindParam(':valeur', $valeur);
+    
+        public function getTelevisionsMarque($id_marque)
+        {
+            $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_MARQUE);
+            $query->bindParam(':id_marque', $id_marque);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
             return $result;
-            }
-    
-            public function getTelevisionsMarque($id_marque){
-                $query = $this->_bdd->prepare(self::SELECT_TELEVISEUR_MARQUE);
-                $query->bindParam(':id_marque', $id_marque);
-                $query->execute();
-                $result = $query->fetchAll(PDO::FETCH_ASSOC);
-                return $result;
-                }
+        }
     }
 ?>

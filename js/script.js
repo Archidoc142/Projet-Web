@@ -13,6 +13,18 @@ window.onload = function() {
   jsArticle();
 
   jsTelevision();
+
+  const deleteFavBtns = document.querySelectorAll(".favori-buttons button");
+  
+  deleteFavBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      if(!confirm("Voulez-vous vraiment supprimer ce favori?"))
+      {
+        e.preventDefault();
+      }
+    })
+  })
+
 }
 
 function jsArticle() {
@@ -39,6 +51,7 @@ function jsArticle() {
   btnFavori.addEventListener('click', () => {
     alert("Modification des favoris");
   });
+
 }
 
 function jsMyProfile() {
@@ -195,6 +208,10 @@ function jsTelevision() {
   if (cookieSearch && window.location.href.split("/").pop() == 'television') {
     if (confirm("Reprendre là où vous en étiez à votre dernière recherche?")) {
       window.location.href = "television?" + cookieSearch;
+    }
+    else
+    {
+      document.cookie = 'televisionParameters=; Max-Age=-99999999;';
     }
   }
 }
