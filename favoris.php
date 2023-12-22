@@ -1,8 +1,5 @@
 <?php
     include_once 'inc/header.php';
-
-    //print_r($favoris);
-    
 ?>
 
 <main>
@@ -40,15 +37,14 @@
                             </div>
                         </div>
                     </div>
-                    <form method="post" action="">
+                    <form method="post" action="favoris.php">
 
                     <div class="favori-buttons">
                         <a href="article?modele=<?php echo $tv->get_modele()?>">Consulter</a>
                             <input type="hidden" name="delete" value="<?php echo $tv->get_modele()?>">
-                            <button type="submit" id="deleteFav">
+                            <button type="submit">
                                Supprimer
                             </button>
-                        <!--a href="">Supprimer</a-->
                     </div>
                     </form>
 
@@ -60,6 +56,5 @@
 
 </div>
 <?php } ?>
-</main>
 
 <?php include_once 'inc/footer.php'; ?>

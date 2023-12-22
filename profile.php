@@ -77,12 +77,12 @@
           <label for="id_langue">Langue :</label>
           <input type="text" name="id_langue" value="<?= $langue->get_nom_complet(); ?>" readonly>
           
-          <?php 
-        }
-        ?>
 
 
       </div>
+          <?php 
+        }
+        ?>
 
       <button type="submit" class="button hidden" id="boutonEnregistrer">Enregistrer les modifications</button>
       
@@ -147,6 +147,7 @@
               <button class="button" id="changeMdpConfirm" type="submit">Confirmer</button>
               <button class="button" id="changeMdpAnnuler" type="reset">Annuler</button>
           </div>
+          </div>
         </form>
       <?php
     }
@@ -170,8 +171,6 @@
   <?php    
   }
 ?>
-
-</main>
 
 <?php
   include_once("inc/footer.php");
