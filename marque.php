@@ -1,10 +1,6 @@
 <?php
     include_once 'inc/header.php';
-    require_once 'class/TeleviseurManager.php';
-
-    $tvMgr = new TeleviseurManager($bdd);
-    
-    $marques = $tvMgr->getMarques();
+    $marques = $televiseurManager->getMarques();
     
 ?>
 
@@ -20,6 +16,5 @@
                 
         <?php } ?>
     </div>
-</main>
 
 <?php include_once 'inc/footer.php'; ?>
