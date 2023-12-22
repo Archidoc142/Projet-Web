@@ -32,7 +32,7 @@
         ?>
         <input type="hidden" name="modificationProfil" id="modificationProfil">
         <label class="hidden" for="photo" id="labelPhoto">URL de la photo de profil : </label>
-        <input type="hidden" id="photo" name="photo" value="<?= $userObj->get_photo(); ?>">
+        <input type="text" class="hidden" id="photo" name="photo" value="<?= $userObj->get_photo(); ?>">
         <?php 
           }
         ?>

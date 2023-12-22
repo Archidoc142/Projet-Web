@@ -89,7 +89,7 @@ function jsMyProfile() {
 
       selectLangue.disabled = false;
 
-      photo.type = "text";
+      photo.classList.remove("hidden");
 
       formulaire.classList.add("modifying");
     }
@@ -101,7 +101,7 @@ function jsMyProfile() {
       readOnly = true;
       selectLangue.disabled = true;
 
-      photo.type = "hidden";
+      photo.classList.add("hidden");
       formulaire.classList.remove("modifying");
     }
 
